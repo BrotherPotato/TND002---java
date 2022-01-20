@@ -43,7 +43,6 @@ public class Lab1b {
 		System.out.println(v2.toString());
 		System.out.println(v1.mult(v2));
 		System.out.println(v2.mult(v2));
-		// ehllo
 	}
 
 }

@@ -39,12 +39,14 @@ public class Human {
 		this.name = name;
 	}
 	public String comparison(Human h) {
-		int v1 = this.name.compareTo(h.name);
-		int v2 = compareTo(h.age);
-		int v3 = compareTo(h.age);
+		//int v1 = this.name.compareTo(h.name);
+		int v1 = this.name.compareTo(h.getName());
+		int v2 = this.compareTo(h.age);
+		int v3 = this.compareTo(h.age);
 		
-		return "Text";
+		return String.format("(%2d, %2d, %2d)", v1, v2, v3);
 	}
+	// set compareTo to private
 	public int compareTo(int age) {
 		if(this.age == age) {
 			return 0;
@@ -68,7 +70,7 @@ public class Human {
 	}
 	public String toString() {
 		if(outputFormat && complete) {
-			return "sas";
+			return String.format("Name:%7s, age:%3d, weight:%5.1f", this.name, this.age, this.weight);
 		} else {
 			return "Name. " + this.name;
 		}

@@ -76,8 +76,8 @@ public class Vector {
 	public double length() {
 		double length = 0;
 		
-		length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
-		
+		//length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+		length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
 		return length;
 	}
 	

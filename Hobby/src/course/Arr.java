@@ -95,7 +95,11 @@ public class Arr {
 		for (String i : animals) {
 			System.out.println(i);
 		}
-		
+		hello("dog", 5);
+	}
+	
+	static void hello(String name, int age) {
+		System.out.println("Hello " + name + ", age " + age);
 	}
 
 }

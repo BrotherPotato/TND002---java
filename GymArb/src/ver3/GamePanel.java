@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements MouseListener, MouseMotionListe
 
     static Game game = new Game(keys);
 
-    private static BufferedImage mapImage = ImageHandler.loadMap();
+    //private static BufferedImage mapImage = ImageHandler.loadMap();
     private static int[][] map =loadMap();
 
     GamePanel() {

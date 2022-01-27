@@ -132,11 +132,13 @@ public class Vector {
 	}
 	// toString() returns a formatted string that equals the one in printVector() in Lab1a.
 	public String toString() {
-		String s;
+		//String s;
 		
-		s = "Vector = (" + this.x + ", " + this.y + ", " + this.z + ")";
+		//s = "Vector = (" + this.x + ", " + this.y + ", " + this.z + ")";
 		
-		return s;
+		//return s;
+		
+		return String.format("Vector = (%4.1f, %4.1f, %4.1f)", this.x, this.y, this.z);
 		
 	}
 }

@@ -1,10 +1,10 @@
 package lab1;
 
 public class Vector {
-	double x;
-	double y;
-	double z;
-	static Vector vdef = new Vector(0.0, 0.0, 0.0);
+	private double x;
+	private double y;
+	private double z;
+	public static Vector vdef = new Vector(0.0, 0.0, 0.0);
 		
 	public Vector() {
 		//vdef = new Vector();
@@ -26,7 +26,6 @@ public class Vector {
 		this.x = vdef.x;
 		this.y = vdef.y;
 		this.z = vdef.z;
-		
 	}
 	// plus(arg1,arg2) takes  in  two vectors, adds up their components and returns the result vector.
 	public static Vector plus(Vector arg1, Vector arg2) {
@@ -58,9 +57,6 @@ public class Vector {
 		
 		return result;
 	}
-	/*
-	vector3x = vectorx.mult(3);
-	*/
 	
 	// the second method with the same name mult(Vector arg) calculates the scalar product between the calling vector and arg and returns the result.
 	public double mult(Vector arg) {
@@ -77,7 +73,7 @@ public class Vector {
 		double length = 0;
 		
 		//length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
-		length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+		length = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
 		return length;
 	}
 	
@@ -118,22 +114,10 @@ public class Vector {
 		} else {
 			return -1;
 		}
-		
-		/*
-		double delta = 0.00001; 
-		if(Math.abs(length1 - length2) < delta) {
-			return 0;
-		} else if(length1 > length2) {
-			return 1;
-		} else {
-			return -1;
-		}
-		*/
+
 	}
 	// toString() returns a formatted string that equals the one in printVector() in Lab1a.
 	public String toString() {
-		
 		return String.format("Vector = (%4.1f, %4.1f, %4.1f)", this.x, this.y, this.z);
-		
 	}
 }

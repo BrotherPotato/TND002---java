@@ -13,16 +13,15 @@ public class Lab1a {
 		printVector(resultAdd);
 		printVector(resultSub);
 	}
-
 	
 	public static double[] addition(double[] arg1, double[] arg2) {
 		double[] result = new double[3];
 		for (int i = 0; i < arg1.length; i++) {
 			result[i] = arg1[i] + arg2[i];
 		}
-		
 		return result;
 	}
+	
 	public static double[] subtraction(double[] arg1, double[] arg2) {
 		double[] result = new double[3];
 		for (int i = 0; i < arg1.length; i++) {
@@ -31,9 +30,8 @@ public class Lab1a {
 		
 		return result;
 	}
+	
 	public static void printVector(double[] arg1) {
-		//String formatedArray = "Vector = (" + arg1[0] + ", " + arg1[1] + ", " + arg1[2] + ")";
-		String formatedArray = new String("Vector = (" + arg1[0] + ", " + arg1[1] + ", " + arg1[2] + ")\n");
-		System.out.println(formatedArray);
+		System.out.println(String.format("Vector = (%4.1f, %4.1f, %4.1f)", arg1[0], arg1[1], arg1[2]));
 	}
 }

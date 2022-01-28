@@ -6,7 +6,7 @@ public class Lesson2 {
 		
 				
 		BufferedReader freader, creader;
-		//BufferedWriter fwriter;
+		BufferedWriter fwriter;
 		File file;
 		
 		// Task 1
@@ -15,22 +15,22 @@ public class Lesson2 {
 		
 		if (file.createNewFile() && file.exists() && file.canRead() && file.canWrite()) {
 			System.out.println(file.getAbsolutePath());
-			//file.deleteOnExit();			
+			file.deleteOnExit();			
 		}
 				
 		// Task 2
 		
-		//fwriter = new BufferedWriter(new FileWriter(file));
+		fwriter = new BufferedWriter(new FileWriter(file));
 		Random myRandom = new Random();
 		
 		
 		int maxloop = myRandom.nextInt(10000);
-		//fwriter.write("Loop variable: " + maxloop + " "); fwriter.newLine();
+		fwriter.write("Loop variable: " + maxloop + " "); fwriter.newLine();
 		for (int i=0; i < maxloop; i++) {
-		//	fwriter.write(String.valueOf(myRandom.nextInt(1000)+ " "));				
+			fwriter.write(String.valueOf(myRandom.nextInt(1000)+ " "));				
 		}
 		
-		//fwriter.flush(); // Test what happens if you don't flush.
+		fwriter.flush(); // Test what happens if you don't flush.
 		
 		// Task 3
 		
@@ -47,11 +47,11 @@ public class Lesson2 {
 		strArr.remove(strArr.size()-1);
 		
 		for (int j=0; j < strArr.size(); j++) {
-		//	fwriter.write(strArr.get(j));
-		//	fwriter.newLine();
+			fwriter.write(strArr.get(j));
+			fwriter.newLine();
 		}
 		
-		//fwriter.flush();
+		fwriter.flush();
 		
 		// Task 4
 		ArrayList<Integer> intArr = new ArrayList<Integer>();
@@ -87,7 +87,7 @@ public class Lesson2 {
 		
 		System.out.println("The file size has changed");
 		
-		//freader.close(); creader.close(); fwriter.close(); 
+		freader.close(); creader.close(); fwriter.close(); 
 		file.delete(); 
 	}
 

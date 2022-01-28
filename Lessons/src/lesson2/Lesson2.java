@@ -12,6 +12,7 @@ public class Lesson2 {
 		// Task 1
 		
 		file = new File("Test.txt");
+		//file.createNewFile();
 		
 		if (file.createNewFile() && file.exists() && file.canRead() && file.canWrite()) {
 			System.out.println(file.getAbsolutePath());
@@ -31,7 +32,7 @@ public class Lesson2 {
 		}
 		
 		fwriter.flush(); // Test what happens if you don't flush.
-		
+		/*
 		// Task 3
 		
 		creader = new BufferedReader(new InputStreamReader(System.in));
@@ -89,6 +90,7 @@ public class Lesson2 {
 		
 		freader.close(); creader.close(); fwriter.close(); 
 		file.delete(); 
+		*/
 	}
-
+	
 }

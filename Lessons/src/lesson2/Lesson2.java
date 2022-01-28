@@ -83,7 +83,7 @@ public class Lesson2 {
 		freader.close();
 		
 		freader = new BufferedReader(new FileReader(file));
-		/*
+		
 		// Task 5
 		
 		long length = file.length();
@@ -94,7 +94,7 @@ public class Lesson2 {
 		
 		freader.close(); creader.close(); fwriter.close(); 
 		file.delete(); 
-		*/
+		
 	}
 	
 }

@@ -38,12 +38,26 @@ public class Word {
 	// It should return a value -1 if the value of the instance variable of the calling instance of Word is smaller than that of arg in the argument list of compareTo(arg).
 	// Otherwise, compareTo(arg) should return 1.
 	public int compareTo(Word w) {
-		return 1;
+		if(sortCriterion == ORIGINAL) {
+			return 0;
+		} else if(sortCriterion == BYNAME) {
+			return this.word.compareTo(w.word);
+		} else if(sortCriterion == BYCOUNTS) {
+			if(this.count == w.count) {
+				return 0;
+			} else if(this.count < w.count) {
+				return -1;
+			} else {
+				return 1;
+			}
+		} else {
+			return 1;
+		}
 	}
 	// toString() returns a formatted string.
 	// It starts with ”Word:” followed by the value of word in a column 10 characters wide and aligned to the right.
 	// You leave 3 empty spaces and write ”Count:” followed by the value of count in a column 3 characters wide.
 	public String toString() {
-		return "";
+		return String.format("Word: %10s   Count: %3d", this.word, this.count);
 	}
 }

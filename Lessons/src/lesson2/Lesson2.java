@@ -1,10 +1,10 @@
 package lesson2;
-import java.io.*; import java.util.Random; import java.util.ArrayList;
+import java.io.*; 
+import java.util.Random; 
+import java.util.ArrayList;
 public class Lesson2 {
 
-	public static void main(String[] args) throws IOException {
-		
-				
+	public static void main(String[] args) throws IOException {	
 		BufferedReader freader, creader;
 		BufferedWriter fwriter;
 		File file;
@@ -32,7 +32,7 @@ public class Lesson2 {
 		}
 		
 		fwriter.flush(); // Test what happens if you don't flush.
-		/*
+		
 		// Task 3
 		
 		creader = new BufferedReader(new InputStreamReader(System.in));
@@ -68,8 +68,12 @@ public class Lesson2 {
 		while ((rs = freader.readLine())!=null) {
 			splitted = rs.split(" +");
 			for (int i=0; i < splitted.length; i++) {
-				try {intArr.add(Integer.valueOf(splitted[i]));}
-				catch(NumberFormatException ierr) {strArr.add(splitted[i]);}
+				try {
+					intArr.add(Integer.valueOf(splitted[i]));
+				}
+				catch(NumberFormatException ierr) {
+					strArr.add(splitted[i]);
+				}
 			}
 		}
 		
@@ -79,7 +83,7 @@ public class Lesson2 {
 		freader.close();
 		
 		freader = new BufferedReader(new FileReader(file));
-		
+		/*
 		// Task 5
 		
 		long length = file.length();

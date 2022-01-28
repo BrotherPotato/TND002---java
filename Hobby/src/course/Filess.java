@@ -1,6 +1,7 @@
 package course;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.Writer;
 import java.io.File;
 import java.io.FileReader;
@@ -18,8 +19,8 @@ public class Filess extends Writer{
 		File f = new File(fname);
 		f.createNewFile();
 		boolean overwrite = false;
-		//Writer w2 = new BufferedWriter(new FileWriter(f, overwrite));
-		//PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
+		Writer w2 = new BufferedWriter(new FileWriter(f, overwrite));
+		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
 		
 		/*
 		String s;

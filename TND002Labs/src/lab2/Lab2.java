@@ -1,8 +1,10 @@
 package lab2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -102,10 +104,24 @@ public class Lab2 {
 			System.out.println("Original");
 			theDictionary.sortList(Word.ORIGINAL);
 			System.out.println(theDictionary.toString());
+			
+			File resultFile = new File("result.txt");
+			BufferedWriter fwriter = new BufferedWriter(new FileWriter(resultFile)); ;
+			int index = 0;
+			String word = theDictionary.returnWord(index);
+			while(word != "end") {
+				//System.out.println(word.toString());
+				fwriter.write(word.toString());
+				fwriter.newLine();
+				index++;
+				word = theDictionary.returnWord(index);
+			}
+			//fwriter.write(theDictionary.toString());
+			fwriter.flush();
+			fwriter.close();
 		}
-		
 		b.close();
-		freader.close();		
+		freader.close();
 	}
 
 }

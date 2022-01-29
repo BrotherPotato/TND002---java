@@ -26,7 +26,8 @@ public class Lesson2 {
 		
 		
 		int maxloop = myRandom.nextInt(10000);
-		fwriter.write("Loop variable: " + maxloop + " "); fwriter.newLine();
+		fwriter.write("Loop variable: " + maxloop + " "); 
+		fwriter.newLine();
 		for (int i=0; i < maxloop; i++) {
 			fwriter.write(String.valueOf(myRandom.nextInt(1000)+ " "));				
 		}

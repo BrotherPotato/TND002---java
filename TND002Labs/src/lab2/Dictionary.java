@@ -1,6 +1,7 @@
 package lab2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Dictionary {
 	// You initialize backup to null when you declare it.
@@ -43,13 +44,29 @@ public class Dictionary {
 	// sortList(arg) sorts the instances of Word in theList according to the value of arg.
 	// If sortList(arg) is called for the first time, then it should copy the address of theList to backup.
 	// If sortList(arg) is called for the first time, then it should copy the address of theList to backup.
-	// If arg has the value of one of the other class constants, then you set sortCriterion to arg and you start off with a loop over all elements of theList.
-	// Use the compareTo(arg) of Word to compare the instance of Word at the current position in theList to the instances in the slots with a higher index
+	// If arg has the value of one of the other class constants, then you set sortCriterion to arg 
+	// and you start off with a loop over all elements of theList.
+	// Use the compareTo(arg) of Word to compare the instance of Word at the current position in theList to the instances 
+	// in the slots with a higher index
 	// Depending on the result of compareTo(arg), you keep both instances of Word unchanged or you swap them.
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
-	public String sortList(int i) {
-		
-		
+	public String sortList(int arg) {
+		if(backUp == null) {
+			backUp = theList;
+		}
+		if(arg == Word.ORIGINAL || arg == Word.BYNAME || arg == Word.BYCOUNTS) {
+			Word.setCriterion(arg);
+			for (int y = 0; y < this.theList.size(); y++) {
+				for (int i = 0; i < this.theList.size(); i++) {
+					Word w1 = this.theList.get(i);
+					Word w2 = this.theList.get(i+1);
+					
+					if(w1.compareTo(w2) == 1) {
+						Collections.swap(this.theList, i, i+1);
+					}
+				}
+			}
+		}
 		
 		return "";
 	}

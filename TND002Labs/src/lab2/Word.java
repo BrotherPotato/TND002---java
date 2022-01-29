@@ -53,6 +53,8 @@ public class Word {
 		} else {
 			return 1;
 		}
+		
+		
 	}
 	// toString() returns a formatted string.
 	// It starts with ”Word:” followed by the value of word in a column 10 characters wide and aligned to the right.

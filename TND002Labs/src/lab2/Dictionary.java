@@ -43,7 +43,6 @@ public class Dictionary {
 	}
 	// sortList(arg) sorts the instances of Word in theList according to the value of arg.
 	// If sortList(arg) is called for the first time, then it should copy the address of theList to backup.
-	// If sortList(arg) is called for the first time, then it should copy the address of theList to backup.
 	// If arg has the value of one of the other class constants, then you set sortCriterion to arg 
 	// and you start off with a loop over all elements of theList.
 	// Use the compareTo(arg) of Word to compare the instance of Word at the current position in theList to the instances 
@@ -51,36 +50,53 @@ public class Dictionary {
 	// Depending on the result of compareTo(arg), you keep both instances of Word unchanged or you swap them.
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
 	public String sortList(int arg) {
-		if(backUp == null) {
-			backUp = theList;
+		if(backUp == null || backUp.isEmpty()) {
+			backUp = new ArrayList<>(theList);
+			System.out.println("backUp saved");
 		}
-		if(arg == Word.ORIGINAL || arg == Word.BYNAME || arg == Word.BYCOUNTS) {
+		if(arg == Word.ORIGINAL) {
 			Word.setCriterion(arg);
-			for (int y = 0; y < this.theList.size(); y++) {
-				for (int i = 0; i < this.theList.size(); i++) {
-					Word w1 = this.theList.get(i);
-					Word w2 = this.theList.get(i+1);
+			theList = backUp;
+			System.out.println("backUp loaded");
+		} else if(arg == Word.BYNAME || arg == Word.BYCOUNTS) {
+			Word.setCriterion(arg);
+			for (int i= 0; i < this.theList.size()-1; i++) {
+				for (int y = 0; y < this.theList.size()-i-1; y++) {
+					Word w1 = this.theList.get(y);
+					Word w2 = this.theList.get(y+1);
 					
-					if(w1.compareTo(w2) == 1) {
-						Collections.swap(this.theList, i, i+1);
+					if(w1.compareTo(w2) == -1) {
+						Collections.swap(this.theList, y, y+1);
 					}
 				}
 			}
+			System.out.println("Array sorted");
 		}
 		
 		return "";
 	}
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
-	// If arg is equal or larger than the size of theList, the method should return ”end”. Otherwise, it should return the value of word.
+	// If arg is equal or larger than the size of theList, the method should return ”end”. 
+	// Otherwise, it should return the value of word.
 
-	public String returnWord(int i) {
-		return "";
+	public String returnWord(int arg) {
+		if(this.theList.size() <= arg) {
+			return "end";
+		} else {
+			return this.theList.get(arg).getWord();
+		}
 	}
 	// toString() should return a string that starts with ”Content: ” followed by a line break.
 	// It should call the toString() methods of all elements of theList and concatenate their return strings to one large string.
-	// It should call the toString() methods of all elements of theList and concatenate their return strings to one large string.
 	// The method should return the concatenated string.
 	public String toString() {
-		return "";
+		String output = "Content: \n";
+		
+		for (int i = 0; i < this.theList.size(); i++) {
+			Word indexWord = this.theList.get(i);
+			output = output + indexWord.toString() + "\n";
+		}
+		
+		return output;
 	}
 }

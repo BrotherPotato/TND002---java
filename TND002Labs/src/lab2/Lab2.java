@@ -82,15 +82,20 @@ public class Lab2 {
 			}
 			System.out.println("Original");
 			System.out.println(theDictionary.toString());
+			/*
 			System.out.println("Original");
 			theDictionary.sortList(Word.ORIGINAL);
 			System.out.println(theDictionary.toString());
+			*/
+
 			System.out.println("Sort BYCOUNTS");
 			theDictionary.sortList(Word.BYCOUNTS);
 			System.out.println(theDictionary.toString());
+			/*
 			System.out.println("Original");
 			theDictionary.sortList(Word.ORIGINAL);
 			System.out.println(theDictionary.toString());
+			*/
 			System.out.println("Sort BYNAME");
 			theDictionary.sortList(Word.BYNAME);
 			System.out.println(theDictionary.toString());

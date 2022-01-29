@@ -41,7 +41,8 @@ public class Word {
 		if(sortCriterion == ORIGINAL) {
 			return 0;
 		} else if(sortCriterion == BYNAME) {
-			return this.word.compareTo(w.word);
+			//System.out.println(Integer.signum(this.word.compareTo(w.word)));
+			return Integer.signum(w.word.compareTo(this.word));
 		} else if(sortCriterion == BYCOUNTS) {
 			if(this.count == w.count) {
 				return 0;

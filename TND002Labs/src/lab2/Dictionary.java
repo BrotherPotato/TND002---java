@@ -52,12 +52,12 @@ public class Dictionary {
 	public String sortList(int arg) {
 		if(backUp == null || backUp.isEmpty()) {
 			backUp = new ArrayList<>(theList);
-			System.out.println("backUp saved");
+			//System.out.println("backUp saved");
 		}
 		if(arg == Word.ORIGINAL) {
 			Word.setCriterion(arg);
-			theList = backUp;
-			System.out.println("backUp loaded");
+			theList = new ArrayList<>(backUp);
+			//System.out.println("backUp loaded");
 		} else if(arg == Word.BYNAME || arg == Word.BYCOUNTS) {
 			Word.setCriterion(arg);
 			for (int i= 0; i < this.theList.size()-1; i++) {
@@ -70,7 +70,7 @@ public class Dictionary {
 					}
 				}
 			}
-			System.out.println("Array sorted");
+			//System.out.println("Array sorted");
 		}
 		
 		return "";

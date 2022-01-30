@@ -29,6 +29,6 @@ public class Inher extends DiceRoller{
 	@Override
 	void go() {
 		// TODO Auto-generated method stub
-		System.out.println("GOOOOOOO");
+		System.out.println("asdasd");
 	}
 }

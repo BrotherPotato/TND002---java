@@ -1,19 +1,37 @@
 package course;
 
 import java.util.Random;
-
-public class DiceRoller {
+// can't instantiate diceroller
+public abstract class DiceRoller {
 	
-	Object random;
+	Random rand;
 	int number;
 	
+	String name = "";
+	int age;
+	
+	DiceRoller(String name, int age){
+		this.name = name;
+		this.age = age;
+	}
+	
 	DiceRoller() {
-		random = new Random();
+		rand = new Random();
 		number = 0;
-		//roll();
+		roll();
 	}
 	void roll() {
-		random = new Random();
-		number = random.nextInt(6)+1;
+		rand = new Random();
+		number = rand.nextInt(6)+1;
+		System.out.println(number);
 	}
+	
+	void speak() {
+		System.out.println("Words");
+	}
+	public String toString() {
+		return this.name + "\n" + this.age + "\n";
+	}
+	abstract void go();
+	
 }

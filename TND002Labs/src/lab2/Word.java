@@ -5,13 +5,13 @@ public class Word {
 	public static int BYNAME = 1;
 	public static int BYCOUNTS = 2;
 	
-	private String word;
+	private String theWord;
 	private int count;
 	
 	public static int sortCriterion = BYCOUNTS;
 	
 	public Word(String s, int i) {
-		this.word = s;
+		this.theWord = s;
 		this.count = i;
 	}
 	public int getCount() {
@@ -19,7 +19,7 @@ public class Word {
 	}
 	
 	public String getWord() {
-		return this.word;
+		return this.theWord;
 	}
 	// setCriterion(arg) changes the value of sortCriterion to one of the three possible ones (set by the class constants).
 	public static void setCriterion(int i) {
@@ -42,7 +42,7 @@ public class Word {
 			return 0;
 		} else if(sortCriterion == BYNAME) {
 			//System.out.println(Integer.signum(this.word.compareTo(w.word)));
-			return Integer.signum(w.word.compareTo(this.word));
+			return Integer.signum(w.theWord.compareTo(this.theWord));
 		} else if(sortCriterion == BYCOUNTS) {
 			if(this.count == w.count) {
 				return 0;
@@ -61,6 +61,6 @@ public class Word {
 	// It starts with ”Word:” followed by the value of word in a column 10 characters wide and aligned to the right.
 	// You leave 3 empty spaces and write ”Count:” followed by the value of count in a column 3 characters wide.
 	public String toString() {
-		return String.format("Word: %10s   Count: %3d", this.word, this.count);
+		return String.format("Word: %10s   Count: %3d", this.theWord, this.count);
 	}
 }

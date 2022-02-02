@@ -26,19 +26,20 @@ public class Dictionary {
 	        	  // save the current index and that the word was found
 	        	  found = true;
 	        	  foundIndex = index; 
+	        	  break;
 	          } 
 	    }
 		if(found) {
       	  	int count = this.theList.get(foundIndex).getCount();
     	  	count++;
-    	  	String word = s;
-    	  	Word newW = new Word(word, count);
-    	  	this.theList.set(foundIndex, newW);
-    	    return newW.toString();
+    	  	String word = this.theList.get(foundIndex).getWord();
+    	  	Word newWord = new Word(word, count);
+    	  	this.theList.set(foundIndex, newWord);
+    	    return newWord.toString();
 		} else {
-			Word newW = new Word(s, 1);
-      	  	this.theList.add(newW);
-      	  	return newW.toString();
+			Word newWord = new Word(s, 1);
+      	  	this.theList.add(newWord);
+      	  	return newWord.toString();
 		}
 	}
 	// sortList(arg) sorts the instances of Word in theList according to the value of arg.
@@ -51,12 +52,34 @@ public class Dictionary {
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
 	public String sortList(int arg) {
 		if(backUp == null || backUp.isEmpty()) {
-			backUp = new ArrayList<>(theList);
+			
+			//backUp = new ArrayList<>(theList);
+			// allocate memory to the backUp
+			backUp = new ArrayList<>();
+			for (int i= 0; i < this.theList.size(); i++) {
+				String word = this.theList.get(i).getWord();
+				int count = this.theList.get(i).getCount();
+				Word newW = new Word(word, count);
+				this.backUp.add(newW);
+			}
+			//backUp.addAll(theList.clone());
+			//System.out.println(theList);
+			//System.out.println(backUp);
+			
+			//backUp.addAll(theList);
 			//System.out.println("backUp saved");
 		}
 		if(arg == Word.ORIGINAL) {
 			Word.setCriterion(arg);
+			// shallow copy
 			theList = new ArrayList<>(backUp);
+			// We clone the backUp and cast the created objects to a ArrayList of type word
+			//theList =  (ArrayList<Word>) backUp.clone();
+	         
+	        //System.out.println(theList);
+			
+			return "Sorted according to the original";
+			
 			//System.out.println("backUp loaded");
 		} else if(arg == Word.BYNAME || arg == Word.BYCOUNTS) {
 			Word.setCriterion(arg);
@@ -72,8 +95,14 @@ public class Dictionary {
 			}
 			//System.out.println("Array sorted");
 		}
+		if(arg == Word.BYCOUNTS) {
+			return "Sorted by counts";
+		} else if(arg == Word.BYNAME) {
+			return "Sorted alphabetically";
+		} else {
+			return "Sorting criterion undefined";
+		}
 		
-		return "";
 	}
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
 	// If arg is equal or larger than the size of theList, the method should return ”end”. 
@@ -83,7 +112,7 @@ public class Dictionary {
 		if(this.theList.size() <= arg) {
 			return "end";
 		} else {
-			return this.theList.get(arg).getWord();
+			return this.theList.get(arg).getWord().toString();
 		}
 	}
 	// toString() should return a string that starts with ”Content: ” followed by a line break.

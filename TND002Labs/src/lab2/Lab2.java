@@ -10,12 +10,6 @@ import java.io.InputStreamReader;
 
 public class Lab2 {
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		/*
-		File file = new File("TextSource.txt");
-		System.out.println(file.getAbsolutePath());
-		System.out.println(System.getProperty("user.dir"));
-		*/
 		String filePath = System.getProperty("user.dir");
 		System.out.println(filePath);
 		String input;
@@ -29,7 +23,7 @@ public class Lab2 {
 			}
 			System.out.print("Input: ");
 			input = b.readLine();
-			input = filePath + "\\src\\" + input;
+			input = filePath + "\\src\\\\" + input;
 			newFile = new File(input);
 			tries++;
 		} while(!newFile.exists());
@@ -38,21 +32,21 @@ public class Lab2 {
 		String allLines = new String();
 		String line;
 		BufferedReader freader = new BufferedReader(new FileReader(newFile));
-		
+		// read all lines concat to one string
 		while ((line = freader.readLine()) != null) {
-			//String line = freader.readLine();
 			if(allLines.length() == 0) {
 				allLines = line;
 			} else {
 				allLines = allLines + " " + line;
 			}
 		}
-		
+		// check if allLLines exist
 		if(allLines.isEmpty()) {
 			System.out.println("Could not read text in file");
-		} else {
+		} else {	// if they do split string to array
 			Dictionary theDictionary = new Dictionary();
 			String[] splitted = allLines.split(" +");
+			// check a word in the array
 			System.out.print("Input: ");
 			input = b.readLine();
 			int count = 0;
@@ -62,14 +56,15 @@ public class Lab2 {
 				}	
 			}
 			System.out.println(count);
+			// use a try catch to only add strings to the Dictionary instance
 			for (int j = 0; j < splitted.length; j++) {
 				try {
 					Integer.valueOf(splitted[j]);
 				} catch (NumberFormatException ignore) {
-					//theDictionary.addString(splitted[j]);
 					System.out.println(theDictionary.addString(splitted[j]));
 				}
 			}
+			// check the code
 			System.out.println("\nOriginal");
 			System.out.println(theDictionary.toString());
 
@@ -81,9 +76,9 @@ public class Lab2 {
 			
 			System.out.println(theDictionary.sortList(Word.ORIGINAL));
 			System.out.println(theDictionary.toString());
-			
+			// 
 			File resultFile = new File("result.txt");
-			BufferedWriter fwriter = new BufferedWriter(new FileWriter(resultFile)); ;
+			BufferedWriter fwriter = new BufferedWriter(new FileWriter(resultFile));
 			int index = 0;
 			String wordString = theDictionary.returnWord(index);
 			while(wordString != "end") {				

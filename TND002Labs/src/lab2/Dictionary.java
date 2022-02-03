@@ -52,7 +52,6 @@ public class Dictionary {
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
 	public String sortList(int arg) {
 		if(backUp == null || backUp.isEmpty()) {
-			//backUp = new ArrayList<>(theList);
 			// allocate memory to the backUp
 			backUp = new ArrayList<>();
 			for (int i= 0; i < this.theList.size(); i++) {
@@ -61,8 +60,6 @@ public class Dictionary {
 				Word newW = new Word(word, count);
 				this.backUp.add(newW);
 			}
-			//backUp.addAll(theList.clone());
-			//backUp.addAll(theList);
 		}
 		if(arg == Word.ORIGINAL) {
 			Word.setCriterion(arg);

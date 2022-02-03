@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Lab2 {
-//throws IOException
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		/*
@@ -21,12 +20,8 @@ public class Lab2 {
 		System.out.println(filePath);
 		String input;
 		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
-		//System.out.println("Input: ");
-		//input = b.readLine();
-		//filePath = filePath + "\\" + input + ".txt";
-		//System.out.println(filePath);
 		File newFile;
-		//newFile.createNewFile();
+		
 		int tries = 0;
 		do {
 			if(tries >= 3) {
@@ -38,12 +33,13 @@ public class Lab2 {
 			newFile = new File(input);
 			tries++;
 		} while(!newFile.exists());
+		
 		System.out.println(newFile.getAbsolutePath());
 		String allLines = new String();
 		String line;
 		BufferedReader freader = new BufferedReader(new FileReader(newFile));
 		
-		while ((line = freader.readLine())!= null) {
+		while ((line = freader.readLine()) != null) {
 			//String line = freader.readLine();
 			if(allLines.length() == 0) {
 				allLines = line;
@@ -69,7 +65,7 @@ public class Lab2 {
 			for (int j = 0; j < splitted.length; j++) {
 				try {
 					Integer.valueOf(splitted[j]);
-				} catch (NumberFormatException ierr) {
+				} catch (NumberFormatException ignore) {
 					//theDictionary.addString(splitted[j]);
 					System.out.println(theDictionary.addString(splitted[j]));
 				}
@@ -77,34 +73,24 @@ public class Lab2 {
 			System.out.println("\nOriginal");
 			System.out.println(theDictionary.toString());
 
-			//System.out.println("Sort BYCOUNTS");
-			//theDictionary.sortList(Word.BYCOUNTS);
 			System.out.println(theDictionary.sortList(Word.BYCOUNTS));
 			System.out.println(theDictionary.toString());
 			
-			//System.out.println("Sort BYNAME");
-			//theDictionary.sortList(Word.BYNAME);
 			System.out.println(theDictionary.sortList(Word.BYNAME));
 			System.out.println(theDictionary.toString());
 			
-			//System.out.println("Original");
-			//theDictionary.sortList(Word.ORIGINAL);
 			System.out.println(theDictionary.sortList(Word.ORIGINAL));
 			System.out.println(theDictionary.toString());
-			
 			
 			File resultFile = new File("result.txt");
 			BufferedWriter fwriter = new BufferedWriter(new FileWriter(resultFile)); ;
 			int index = 0;
 			String wordString = theDictionary.returnWord(index);
-			while(wordString != "end") {
-				//System.out.println(word.toString());
-				
-				fwriter.write(wordString.toString());
+			while(wordString != "end") {				
+				fwriter.write(wordString);
 				fwriter.newLine();
 				index++;
 				wordString = theDictionary.returnWord(index);
-				
 				/*
 				fwriter.write(theDictionary.addString(wordString));
 				fwriter.newLine();
@@ -118,5 +104,4 @@ public class Lab2 {
 		b.close();
 		freader.close();
 	}
-
 }

@@ -52,7 +52,6 @@ public class Dictionary {
 	// In the end, you get a list that is either sorted by the number of count or alphabetically by the value of word
 	public String sortList(int arg) {
 		if(backUp == null || backUp.isEmpty()) {
-			
 			//backUp = new ArrayList<>(theList);
 			// allocate memory to the backUp
 			backUp = new ArrayList<>();
@@ -63,16 +62,12 @@ public class Dictionary {
 				this.backUp.add(newW);
 			}
 			//backUp.addAll(theList.clone());
-			//System.out.println(theList);
-			//System.out.println(backUp);
-			
 			//backUp.addAll(theList);
-			//System.out.println("backUp saved");
 		}
 		if(arg == Word.ORIGINAL) {
 			Word.setCriterion(arg);
 			// shallow copy
-			theList = new ArrayList<>(backUp);
+			theList = new ArrayList<Word>(backUp);
 			// We clone the backUp and cast the created objects to a ArrayList of type word
 			//theList =  (ArrayList<Word>) backUp.clone();
 	         
@@ -93,7 +88,6 @@ public class Dictionary {
 					}
 				}
 			}
-			//System.out.println("Array sorted");
 		}
 		if(arg == Word.BYCOUNTS) {
 			return "Sorted by counts";
@@ -112,7 +106,7 @@ public class Dictionary {
 		if(this.theList.size() <= arg) {
 			return "end";
 		} else {
-			return this.theList.get(arg).getWord().toString();
+			return this.theList.get(arg).getWord();
 		}
 	}
 	// toString() should return a string that starts with ”Content: ” followed by a line break.

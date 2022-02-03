@@ -1,29 +1,28 @@
 package lab2;
 
 public class Word {
-	public static int ORIGINAL = 0;
-	public static int BYNAME = 1;
-	public static int BYCOUNTS = 2;
+	public static final int ORIGINAL = 0;
+	public static final int BYNAME = 1;
+	public static final int BYCOUNTS = 2;
 	
 	private String theWord;
 	private int count;
 	
 	public static int sortCriterion = BYCOUNTS;
 	
-	public Word(String s, int i) {
-		this.theWord = s;
-		this.count = i;
+	public Word(String theWord, int count) {
+		this.theWord = theWord;
+		this.count = count;
 	}
 	public int getCount() {
 		return this.count;
 	}
-	
 	public String getWord() {
 		return this.theWord;
 	}
 	// setCriterion(arg) changes the value of sortCriterion to one of the three possible ones (set by the class constants).
-	public static void setCriterion(int i) {
-		sortCriterion = i;
+	public static void setCriterion(int arg) {
+		sortCriterion = arg;
 	}
 	// getCriterion() returns the value of sortCriterion
 	public static int getCriterion() {
@@ -41,7 +40,6 @@ public class Word {
 		if(sortCriterion == ORIGINAL) {
 			return 0;
 		} else if(sortCriterion == BYNAME) {
-			//System.out.println(Integer.signum(this.word.compareTo(w.word)));
 			return Integer.signum(w.theWord.compareTo(this.theWord));
 		} else if(sortCriterion == BYCOUNTS) {
 			if(this.count == w.count) {
@@ -53,9 +51,7 @@ public class Word {
 			}
 		} else {
 			return 1;
-		}
-		
-		
+		}	
 	}
 	// toString() returns a formatted string.
 	// It starts with ”Word:” followed by the value of word in a column 10 characters wide and aligned to the right.

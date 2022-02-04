@@ -22,7 +22,7 @@ public class Bank {
 				found = true;
 			}
 		}
-		if(found) {
+		if(!found) {
 			Customer newCusto = new Customer(string);
 			customerList.add(newCusto);
 			
@@ -31,9 +31,10 @@ public class Bank {
 			Account newAcou = new Account(accountNumber, newCurrent);
 			accountNumber++;
 			accountList.add(newAcou);
+			return "Customer added";
+		} else {
+			return "Customer already exists";
 		}
-		
-		return "Customer added";
 	}
 
 	public Customer findCustomer(String string) {
@@ -48,14 +49,22 @@ public class Bank {
 	}
 
 	public void transfer(String string, double d) {
-		
+		Transaction transfer = new Transaction(string, accountNumber, d);
+		transfer.toString();
 	}
 	public void transfer(String string, String string2, double i) {
-
+		
 	}
 
 	public String checkAccount(int i) {
-		return null;
+		try {
+			Account specAccount = accountList.get(i);
+			return specAccount.toString();
+		} catch (Exception ignored) {
+			return "Not a current account";
+		}
+		
+		
 	}
 	
 	public void annualChange() {

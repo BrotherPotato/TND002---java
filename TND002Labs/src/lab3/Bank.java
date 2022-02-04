@@ -63,8 +63,6 @@ public class Bank {
 		} catch (Exception ignored) {
 			return "Not a current account";
 		}
-		
-		
 	}
 	
 	public void annualChange() {
@@ -74,11 +72,11 @@ public class Bank {
 	}
 
 	public String toString() {
-		System.out.println("\033[4;2m" + "Bank statistics");
+		String output = "\\033[4;2m" + "Bank statistics";
 //		System.out.print("\033[4;30m");
 //        System.out.println("Bank statistics");
 //        System.out.print("\033[0m");
-		String.format("Customers: %10s %12d", null);
-		return null;
+		//String.format("Customers: %10s %12d", null);
+		return output;
 	}
 }

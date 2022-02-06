@@ -16,31 +16,31 @@ public class Current extends Account{
 	public Customer getCustomer() {
 		return this.theCustomer;
 	}
+	// current account super.getNumber()
+	// savings account super.otherAccount.getNumber()
 	public void transfer(double d) {
 		if(d != 0 && (super.otherAccount.getBalance() - d) > 0 && (super.getBalance() - d) > 0) {
-			if(d > 0) {
-				theTransactions.add(new Transaction("to", super.getNumber(), d));
-				theTransactions.add(new Transaction("from", super.otherAccount.getNumber(), d));
-			} else {
-				theTransactions.add(new Transaction("to", super.otherAccount.getNumber(), d));
-				theTransactions.add(new Transaction("from", super.getNumber(), d));
-			}
-			
+			this.theTransactions.add(new Transaction("to", super.otherAccount.getNumber(), d));
+			this.theTransactions.add(new Transaction("from", super.getNumber(), d));
+		} else {
+			this.theTransactions.add(new Transaction("to", super.otherAccount.getNumber(), super.getBalance()));
+			this.theTransactions.add(new Transaction("from", super.getNumber(), super.getBalance()));
 		}
 	}
 	public void deposit(Current c, double d) {
-		if(d > 0) {
-			theTransactions.add(new Transaction("from", c.getNumber(), d));
-		} else {
-			System.out.println("Desposit failed");
-		}
+		this.theTransactions.add(new Transaction("from", c.getNumber(), d));
 	}
 	public void transfer(Current c, double d) {
-		theTransactions.add(new Transaction("to", super.getNumber(), d));
+		this.theTransactions.add(new Transaction("to", super.getNumber(), d));
 		deposit(c, d);
 	}
 	public String toString() {
-		return String.format("Customer %20s \nAccount number %15d \nBalance %15f \nSavings %15f", 
-				this.theCustomer.getName(), super.getNumber(), super.getBalance(), this.getBalance());
+		//String.format("Customer %20s \nAccount number %15d \nBalance %15f \nSavings %15f \nList of transactions " + theTransactions.toString(), 
+		//		this.theCustomer.getName(), super.getNumber(), super.getBalance(), this.getBalance());
+		String output = String.format("Customer %20s \nAccount number %15d \nBalance %15f \nSavings %15f \nList of transactions ", this.theCustomer.getName(), super.getNumber(), super.getBalance(), this.getBalance());
+		for (int i = 0; i < theTransactions.size(); i++) {
+			output = output + theTransactions.get(i).toString();
+		}
+		return output;
 	}
 }

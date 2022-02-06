@@ -9,14 +9,15 @@ public class Account {
 	public static final double INTEREST = 0.02;
 	
 	public Account(int i) {
-		accountNumber = i;
-		accountType = "Current";
+		this.accountNumber = i;
+		this.accountType = "Current";
 	}
 	public Account(int i, Current c){
-		accountNumber = i;
-		otherAccount = c;
-		accountType = "Savings";
-		//c.getCustomer().addAccounts(c, c);
+		this.accountNumber = i;
+		this.otherAccount = c.getCustomer().getCurrentAccount();
+		this.accountType = "Savings";
+		//this.otherAccount.otherAccount = this;
+		
 	}
 	public String getAccountType() {
 		return this.accountType;
@@ -29,10 +30,10 @@ public class Account {
 	}
 	public void annualChange() {
 		if(accountType == "Current"){
-			balance = balance - FEE;
+			this.balance = this.balance - FEE;
 		}
 		if(accountType == "Savings") {
-			balance = balance + balance * INTEREST;
+			this.balance = this.balance + this.balance * INTEREST;
 		}
 	}
 }

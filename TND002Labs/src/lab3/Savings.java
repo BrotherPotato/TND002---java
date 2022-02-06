@@ -7,7 +7,7 @@ public class Savings extends Account{
 		super.balance = 0.0;
 	}
 	public void changeBalance(double d) {
-		super.balance += d;
+		super.otherAccount.balance += d;
 	}
 	public double getBalance() {
 		return super.balance;

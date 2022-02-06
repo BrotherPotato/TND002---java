@@ -19,7 +19,12 @@ public class Customer {
 		this.savingsAccount = s;
 	}
 	public String toString() {
-		// fgisasdasdasd
-		return String.format("Name of customer %16s \nCurrent account ", this.name);
+		// change %15d to another path?
+		if(currentAccount != null && savingsAccount != null) {
+			return String.format("Name of customer %16s \nCurrent account %15d \nSavings account %15d", 
+					this.name, this.currentAccount, this.savingsAccount);
+		} else {
+			return String.format("Name of customer %16s \n", this.name);
+		}
 	}
 }

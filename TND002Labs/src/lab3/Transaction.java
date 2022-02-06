@@ -11,6 +11,6 @@ public class Transaction {
 		this.theAmount = d;
 	}
 	public String toString() {
-		return String.format("Money transfer %5s  account %4d : %6.2f", this.tofrom, this.theAccount, this.theAmount);
+		return String.format("Money transfer %5s account %4d : %6.2f \n", this.tofrom, this.theAccount, this.theAmount);
 	}
 }

@@ -14,9 +14,10 @@ public class Account {
 	}
 	public Account(int i, Current c){
 		this.accountNumber = i;
-		this.otherAccount = c.getCustomer().getCurrentAccount();
+		this.otherAccount = c;
 		this.accountType = "Savings";
-		//this.otherAccount.otherAccount = this;
+		
+		c.otherAccount = this;
 		
 	}
 	public String getAccountType() {

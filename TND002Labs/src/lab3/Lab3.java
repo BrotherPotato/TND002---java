@@ -6,7 +6,7 @@ public class Lab3 {
 		
 		Bank theBank = new Bank();
 
-		System.out.println(theBank.addCustomer("Joel Svensson",2000.0));
+		System.out.println(theBank.addCustomer("Joel Svensson",2000.0));	
 		System.out.println(theBank.addCustomer("Joel Svensson",2000.0));	
 		theBank.findCustomer("Mark Svensson");
 		System.out.println();

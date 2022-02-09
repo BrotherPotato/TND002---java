@@ -1,5 +1,7 @@
 package lesson4;
 
+//import lesson4.Geometry.Shape;
+
 public class Square extends Geometry.Shape {
 
 	private double length, area;

@@ -6,18 +6,17 @@ public class Current extends Account{
 	private Customer theCustomer;
 	private ArrayList<Transaction> theTransactions;
 	
-	public Current(Customer cust, int i, double d) {
-		super(i);
-		theCustomer = cust;
-		super.balance = d;
+	public Current(Customer customer, int accountNumber, double amount) {
+		super(accountNumber);
+		theCustomer = customer;
+		super.balance = amount;
 		theTransactions = new ArrayList<Transaction>();
 		
 	}
 	public Customer getCustomer() {
 		return this.theCustomer;
 	}
-	// current account super.getNumber()
-	// savings account super.otherAccount.getNumber()
+
 	public void transfer(double amount) {
 		if(amount != 0) {
 			Account currentAccount = this;
@@ -62,10 +61,6 @@ public class Current extends Account{
 		deposit(currentAccount, amount);
 	}
 	public String toString() {
-		//String output = String.format("Customer %20s \nAccount number %15d \nBalance %15f \nSavings %15f \nList of transactions\n", 
-		//		this.theCustomer.getName(), super.getNumber(), super.getBalance(), super.otherAccount.getBalance());
-		
-		
 		String line1 = String.format("%20s %15s \n", "Customer", this.theCustomer.getName());
 		String line2 = String.format("%20s %15s \n", "Account number", this.getNumber());
 		String line3 = String.format("%20s %15s \n", "Balance", this.getBalance());

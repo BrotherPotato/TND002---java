@@ -4,12 +4,14 @@ public class Savings extends Account{
 	
 	public Savings(Current c, int i) {
 		super(i, c);
-		super.balance = 0.0;
+		//super.balance = 0.0;
+		this.balance = 0.0;
 	}
 	public void changeBalance(double d) {
-		super.otherAccount.balance += d;
+		//super.otherAccount.balance += d;
+		this.balance += d;
 	}
 	public double getBalance() {
-		return super.balance;
+		return this.balance;
 	}
 }

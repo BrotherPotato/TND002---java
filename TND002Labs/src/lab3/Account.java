@@ -8,17 +8,16 @@ public class Account {
 	public static final double FEE = 10.0;
 	public static final double INTEREST = 0.02;
 	
-	public Account(int i) {
-		this.accountNumber = i;
+	public Account(int accountNumber) {
+		this.accountNumber = accountNumber;
 		this.accountType = "Current";
 	}
-	public Account(int i, Current c){
-		this.accountNumber = i;
-		this.otherAccount = c;
+	public Account(int accountNumber, Current currentAccount){
+		this.accountNumber = accountNumber;
+		this.otherAccount = currentAccount;
 		this.accountType = "Savings";
 		
-		c.otherAccount = this;
-		
+		currentAccount.otherAccount = this;
 	}
 	public String getAccountType() {
 		return this.accountType;

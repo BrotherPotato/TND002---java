@@ -17,7 +17,6 @@ public class Bank {
 		name = name.trim();
 		boolean found = false;
 		for (int i = 0; i < customerList.size(); i++) {
-			//customerList.get(i).getName();
 			if(customerList.get(i).getName().equals(name)) {
 				found = true;
 			}
@@ -55,13 +54,17 @@ public class Bank {
 
 	public void transfer(String customerName, double amount) {
 		Customer transferCustomer = findCustomer(customerName);
-		transferCustomer.getCurrentAccount().transfer(amount);
+		if(transferCustomer != null) {
+			transferCustomer.getCurrentAccount().transfer(amount);
+		}
 	}
 	
 	public void transfer(String customerName1, String customerName2, double amount) {
 		Customer transferFromCustomer = findCustomer(customerName1);
 		Customer transferToCustomer = findCustomer(customerName2);
-		transferFromCustomer.getCurrentAccount().transfer(transferToCustomer.getCurrentAccount(), amount);
+		if(transferFromCustomer != null && transferToCustomer != null) {
+			transferFromCustomer.getCurrentAccount().transfer(transferToCustomer.getCurrentAccount(), amount);
+		}
 	}
 
 	public String checkAccount(int accountNumber) {

@@ -13,20 +13,20 @@ public class Bank {
 		accountNumber = 1000;
 	}
 	
-	public String addCustomer(String string, double d) {
-		string = string.trim();
+	public String addCustomer(String name, double amount) {
+		name = name.trim();
 		boolean found = false;
 		for (int i = 0; i < customerList.size(); i++) {
 			//customerList.get(i).getName();
-			if(customerList.get(i).getName().equals(string)) {
+			if(customerList.get(i).getName().equals(name)) {
 				found = true;
 			}
 		}
 		if(!found) {
-			Customer newCusto = new Customer(string);
+			Customer newCusto = new Customer(name);
 			customerList.add(newCusto);
 			
-			Current currenAccount = new Current(newCusto, accountNumber, d);
+			Current currenAccount = new Current(newCusto, accountNumber, amount);
 			accountNumber++;
 			
 			Savings savingAccount = new Savings(currenAccount, accountNumber);
@@ -56,19 +56,16 @@ public class Bank {
 	public void transfer(String customerName, double amount) {
 		Customer transferCustomer = findCustomer(customerName);
 		transferCustomer.getCurrentAccount().transfer(amount);
-		
-		
-		//Transaction transfer = new Transaction(string, accountNumber, d);
-		//transfer.toString();
 	}
+	
 	public void transfer(String customerName1, String customerName2, double amount) {
 		Customer transferFromCustomer = findCustomer(customerName1);
 		Customer transferToCustomer = findCustomer(customerName2);
 		transferFromCustomer.getCurrentAccount().transfer(transferToCustomer.getCurrentAccount(), amount);
 	}
 
-	public String checkAccount(int i) {
-		int accNumber = i - 1000;
+	public String checkAccount(int accountNumber) {
+		int accNumber = accountNumber - 1000;
 		Account specAccount = accountList.get(accNumber);
 		
 		String accountType = specAccount.getAccountType();
@@ -85,14 +82,7 @@ public class Bank {
 		}
 	}
 
-	public String toString() {
-//		String output = "\\033[4;2m" + "Bank statistics";
-//		output = "\\e[4mBank statistics\\e[0m";
-//		System.out.print("\033[4;30m");
-//        System.out.println("Bank statistics");
-//        System.out.print("\033[0m");
-		//String.format("Customers: %10s %12d", null);
-		
+	public String toString() {		
 		double sumDeposits = 0;
 		for (int i = 0; i < accountList.size(); i++) {
 			sumDeposits = sumDeposits + accountList.get(i).balance;

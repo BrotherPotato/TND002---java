@@ -29,10 +29,10 @@ public class Account {
 		return this.balance;
 	}
 	public void annualChange() {
-		if(accountType == "Current"){
+		if(accountType.equals("Current")){
 			this.balance = this.balance - FEE;
 		}
-		if(accountType == "Savings") {
+		if(accountType.equals("Savings")) {
 			this.balance = this.balance + this.balance * INTEREST;
 		}
 	}

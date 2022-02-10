@@ -8,8 +8,8 @@ public class Current extends Account{
 	
 	public Current(Customer customer, int accountNumber, double amount) {
 		super(accountNumber);
-		theCustomer = customer;
 		super.balance = amount;
+		theCustomer = customer;
 		theTransactions = new ArrayList<Transaction>();
 		
 	}
@@ -25,39 +25,35 @@ public class Current extends Account{
 			if(amount > 0) {		// to savings account
 				if((currentAccount.getBalance() - amount) >= 0) {
 					this.theTransactions.add(new Transaction("to", savingsAccount.getNumber(), amount));
-					savingsAccount.balance = savingsAccount.balance + amount;
-					//this.theTransactions.add(new Transaction("from", currentAccount.getNumber(), amount));
-					currentAccount.balance = currentAccount.balance - amount;
+					savingsAccount.balance = savingsAccount.getBalance() + amount;
+					currentAccount.balance = currentAccount.getBalance() - amount;
 				} else {	// move as much money as possible
 					this.theTransactions.add(new Transaction("to", savingsAccount.getNumber(), currentAccount.getBalance()));
-					savingsAccount.balance = savingsAccount.balance + currentAccount.getBalance();
-					//this.theTransactions.add(new Transaction("from", currentAccount.getNumber(), currentAccount.getBalance()));
-					currentAccount.balance = currentAccount.balance - currentAccount.getBalance();
+					savingsAccount.balance = savingsAccount.getBalance() + currentAccount.getBalance();
+					currentAccount.balance = currentAccount.getBalance() - currentAccount.getBalance();
 				}
 				
 			} else {		// from savings account
 				amount = Math.abs(amount);
 				if((savingsAccount.getBalance() - amount) >= 0) {
-					//this.theTransactions.add(new Transaction("to", currentAccount.getNumber(), amount));
-					currentAccount.balance = currentAccount.balance + amount;
 					this.theTransactions.add(new Transaction("from", savingsAccount.getNumber(), amount));
-					savingsAccount.balance = savingsAccount.balance - amount;
+					currentAccount.balance = currentAccount.getBalance() + amount;
+					savingsAccount.balance = savingsAccount.getBalance() - amount;
 				} else {	// move as much money as possible
-					//this.theTransactions.add(new Transaction("to", currentAccount.getNumber(), savingsAccount.getBalance()));
-					currentAccount.balance = currentAccount.balance + savingsAccount.getBalance();
 					this.theTransactions.add(new Transaction("from", savingsAccount.getNumber(), savingsAccount.getBalance()));
-					savingsAccount.balance = savingsAccount.balance - savingsAccount.getBalance();
+					currentAccount.balance = currentAccount.getBalance() + savingsAccount.getBalance();
+					savingsAccount.balance = savingsAccount.getBalance() - savingsAccount.getBalance();
 				}
 			}
 		}
 	}
 	public void deposit(Current currentAccount, double amount) {
-		this.theTransactions.add(new Transaction("to", currentAccount.getNumber(), amount));
-		currentAccount.balance = currentAccount.balance + amount;
+		currentAccount.theTransactions.add(new Transaction("from", this.getNumber(), amount));
+		currentAccount.balance = currentAccount.getBalance() + amount;
 	}
 	public void transfer(Current currentAccount, double amount) {
-		currentAccount.theTransactions.add(new Transaction("from", super.getNumber(), amount));
-		super.balance = super.balance - amount;
+		this.theTransactions.add(new Transaction("to", currentAccount.getNumber(), amount));
+		this.balance = this.getBalance() - amount;
 		deposit(currentAccount, amount);
 	}
 	public String toString() {

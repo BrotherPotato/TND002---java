@@ -17,7 +17,7 @@ public class Lab3 {
 		theBank.transfer("Joel Svensson",-250.0);
 		System.out.println(theBank.checkAccount(1000));
 		
-		System.out.println(theBank.addCustomer("Anneli Sund",3000.0));
+		System.out.println(theBank.addCustomer("Anneli Sund", 3000.0));
 		System.out.println();
 		System.out.println(theBank.findCustomer("Anneli Sund"));
 		

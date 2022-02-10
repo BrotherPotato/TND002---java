@@ -19,6 +19,7 @@ public class Bank {
 		for (int i = 0; i < customerList.size(); i++) {
 			if(customerList.get(i).getName().equals(name)) {
 				found = true;
+				break;
 			}
 		}
 		if(!found) {

@@ -6,10 +6,12 @@ import java.io.InputStreamReader;
 
 public class PlayGame {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		//String filePath = System.getProperty("user.dir");
-		//System.out.println(filePath);
+		Dictionary dict = new Dictionary(5);
+		
+		String filePath = System.getProperty("user.dir");
+		System.out.println(filePath);
 		String input;
 		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
 		

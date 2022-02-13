@@ -73,12 +73,12 @@ public class Dictionary {
 			for (int j = 0; j < solutionLetters.length; j++) {
 				if(solutionLetters[j].equals(wordLetters[i])) {
 					if(i == j) {
-						charHints[j] = 2;
-						System.out.println("one correct");
+						charHints[i] = 2;
+						//System.out.println("one correct");
 					} else {
-						if(charHints[j] < 1) {
-							charHints[j] = 1;
-							System.out.println("one close");
+						if(charHints[i] < 1) {
+							charHints[i] = 1;
+							//System.out.println("one close");
 						}
 					}
 				}

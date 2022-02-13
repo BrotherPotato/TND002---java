@@ -26,7 +26,7 @@ public class PlayGame {
 		String filePath = System.getProperty("user.dir");
 		System.out.println(filePath);
 		
-		System.out.println(dict.listOfWords.get(dict.listOfWords.size() - 1));
+		//System.out.println(dict.listOfWords.get(dict.listOfWords.size() - 1));
 		
 		
 		int tries = 0;

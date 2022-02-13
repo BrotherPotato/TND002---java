@@ -12,9 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Dictionary {
 	public ArrayList<String> listOfWords;
 	public String solution;
+	public int size = 5;
 	
 	public Dictionary(int size) throws IOException {
 		this.listOfWords = new ArrayList<String>();
+		this.size = size;
 		File newFile = new File("words_size_" + size + ".txt");
 		if(newFile.exists()) {
 			System.out.println(newFile.getAbsolutePath());
@@ -63,8 +65,10 @@ public class Dictionary {
 	
 	
 	public int[] EnterWord(String word) {
-		int[] charHints = {0, 0, 0, 0, 0};
-		
+		int[] charHints = new int[this.size];
+		for (int i = 0; i < charHints.length; i++) {
+			charHints[i] = 0;
+		}
 		
 		String[] solutionLetters = solution.split("");
 		String[] wordLetters = word.split("");

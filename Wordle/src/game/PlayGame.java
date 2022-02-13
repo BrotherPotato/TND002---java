@@ -39,9 +39,13 @@ public class PlayGame {
 					input = input.toUpperCase();
 					
 					int[] results = dict.EnterWord(input);
-					System.out.println(results[0] + " : " + results[1] + " : " + results[2] + " : " + results[3] + " : " + results[4]);
+					for (int i = 0; i < results.length - 1; i++) {
+						System.out.print(results[i] + " : ");
+					}
+					System.out.println(results[results.length - 1]);
+
 					if(dict.CorrectAnswer(input)) {
-						System.out.println("Congratulations");
+						System.out.println("Congratulations, you did it in " + (tries + 1) + " tries!!");
 						break;
 					}
 					tries++;

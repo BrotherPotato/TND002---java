@@ -26,12 +26,12 @@ public class PlayGame {
 		String filePath = System.getProperty("user.dir");
 		System.out.println(filePath);
 		
-		System.out.println(dict.listOfWords.get(2));
+		System.out.println(dict.listOfWords.get(dict.listOfWords.size() - 1));
 		
 		
 		int tries = 0;
 		do {
-			System.out.print("Input: ");
+			System.out.print("Input row nr:" + tries + ": ");
 			try {
 				input = b.readLine();
 
@@ -42,10 +42,12 @@ public class PlayGame {
 					System.out.println(letters[2]);
 					
 					tries++;
+				} else {
+					System.out.println("Enter a 5 letter word");
 				}
 
 			} catch (IOException ignore) {
-				System.out.println("Enter a 5 letter word");
+				System.out.println("Failed to read input");
 			}
 		} while(tries < 6);
 

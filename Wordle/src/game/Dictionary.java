@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Dictionary {
 	public ArrayList<String> listOfWords;
@@ -50,6 +51,21 @@ public class Dictionary {
 			listOfWords.add(line);
 		}
 		
+		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, listOfWords.size());
+		
+		solution = listOfWords.get(indexNumOfSolution);
+		
+		System.out.println("Solution is: " + solution);
+		
 		freader.close();
+	}
+	
+	
+	public int[] EnterWord(String word) {
+		int[] charHints = new int[5];
+		
+		
+		
+		return charHints;
 	}
 }

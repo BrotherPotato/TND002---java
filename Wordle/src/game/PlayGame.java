@@ -31,15 +31,15 @@ public class PlayGame {
 		
 		int tries = 0;
 		do {
-			System.out.print("Input row nr:" + tries + ": ");
+			System.out.print("Row nr:" + tries + ": input: ");
 			try {
 				input = b.readLine();
 
 				if(input.length() == size) {
 					input = input.toUpperCase();
-					String[] letters = input.split("");
-
-					System.out.println(letters[2]);
+					
+					int[] results = dict.EnterWord(input);
+					System.out.println(results[0] + " : " + results[1] + " : " + results[2] + " : " + results[3] + " : " + results[4]);
 					
 					tries++;
 				} else {

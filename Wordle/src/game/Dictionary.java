@@ -33,6 +33,7 @@ public class Dictionary {
 			// read all lines concat to one string
 			while ((line = freader.readLine()) != null) {
 				if(line.length() == size) {
+					line = line.toUpperCase();
 					fwriter.write(line);
 					fwriter.newLine();
 					//listOfWords.add(line);
@@ -62,9 +63,27 @@ public class Dictionary {
 	
 	
 	public int[] EnterWord(String word) {
-		int[] charHints = new int[5];
+		int[] charHints = {0, 0, 0, 0, 0};
 		
 		
+		String[] solutionLetters = solution.split("");
+		String[] wordLetters = word.split("");
+		
+		for (int i = 0; i < wordLetters.length; i++) {
+			for (int j = 0; j < solutionLetters.length; j++) {
+				if(solutionLetters[j].equals(wordLetters[i])) {
+					if(i == j) {
+						charHints[j] = 2;
+						System.out.println("one correct");
+					} else {
+						if(charHints[j] < 1) {
+							charHints[j] = 1;
+							System.out.println("one close");
+						}
+					}
+				}
+			}
+		}
 		
 		return charHints;
 	}

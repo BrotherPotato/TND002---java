@@ -23,15 +23,15 @@ public class PlayGame {
 		
 		Dictionary dict = new Dictionary(size);
 		
-		String filePath = System.getProperty("user.dir");
-		System.out.println(filePath);
+		//String filePath = System.getProperty("user.dir");
+		//System.out.println(filePath);
 		
 		//System.out.println(dict.listOfWords.get(dict.listOfWords.size() - 1));
 		
 		
 		int tries = 0;
 		do {
-			System.out.print("Row nr:" + tries + ": input: ");
+			System.out.print("Row nr:" + tries + " input: ");
 			try {
 				input = b.readLine();
 
@@ -40,7 +40,10 @@ public class PlayGame {
 					
 					int[] results = dict.EnterWord(input);
 					System.out.println(results[0] + " : " + results[1] + " : " + results[2] + " : " + results[3] + " : " + results[4]);
-					
+					if(dict.CorrectAnswer(input)) {
+						System.out.println("Congratulations");
+						break;
+					}
 					tries++;
 				} else {
 					System.out.println("Enter a 5 letter word");

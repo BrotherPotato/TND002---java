@@ -87,4 +87,12 @@ public class Dictionary {
 		
 		return charHints;
 	}
+	
+	public boolean CorrectAnswer(String word) {
+		if(solution.equals(word)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

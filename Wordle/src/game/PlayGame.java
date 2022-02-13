@@ -7,15 +7,26 @@ import java.io.InputStreamReader;
 public class PlayGame {
 
 	public static void main(String[] args) throws IOException {
+		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
+		int size;
+		String input;
 		
-		Dictionary dict = new Dictionary(5);
+		try {
+			System.out.print("Enter a word size: ");
+			input = b.readLine();
+			size = Integer.valueOf(input);
+		} catch (NumberFormatException ignore) {
+			size = 5;
+		}
+		
+		System.out.println(size);
+		
+		Dictionary dict = new Dictionary(size);
 		
 		String filePath = System.getProperty("user.dir");
 		System.out.println(filePath);
-		String input;
-		BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
 		
-		String targetWord = "";
+		
 		
 		int tries = 0;
 		do {
@@ -23,11 +34,11 @@ public class PlayGame {
 			try {
 				input = b.readLine();
 
-				if(input.length() == 5) {
+				if(input.length() == size) {
 					input = input.toUpperCase();
 					String[] letters = input.split("");
 
-					
+					System.out.println(letters[2]);
 					
 					tries++;
 				}

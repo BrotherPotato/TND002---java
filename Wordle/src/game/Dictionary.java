@@ -16,11 +16,13 @@ public class Dictionary {
 		File newFile = new File("words_size_" + size + ".txt");
 		if(newFile.exists()) {
 			System.out.println(newFile.getAbsolutePath());
+			System.out.println("Found");
 		} else {
 			File dicFile = new File("words_alpha.txt");
 			//newFile = new File("words_size_" + size + ".txt");
 			newFile.createNewFile();
 			System.out.println(newFile.getAbsolutePath());
+			System.out.println("Created");
 		}
 		 
 		String line;

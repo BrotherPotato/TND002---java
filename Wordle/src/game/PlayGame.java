@@ -14,7 +14,7 @@ public class PlayGame {
 		try {
 			System.out.print("Enter a word size: ");
 			input = b.readLine();
-			size = Integer.valueOf(input);
+			size = Integer.parseInt(input);
 		} catch (NumberFormatException ignore) {
 			size = 5;
 		}

@@ -43,18 +43,24 @@ public class Dictionary {
 			while ((line = freader.readLine()) != null) {
 				lineData = line.split(" +");
 				word = lineData[1];
+				//System.out.println(word);
 				//freq = lineData[3];
-				try {
-					freq = Integer.valueOf(lineData[3]);
-				} catch (NumberFormatException ignore) {
-					System.out.println("Error reading file");
-					freq = 0;
-				}
 				
-				if(line.length() == size) {
-					line = line.toUpperCase();
+				if(word.length() == size) {
+					word = word.toUpperCase();
+					System.out.println(word);
 					fwriter.write(word);
-					fwriter.write("\t");
+					fwriter.write("    ");
+					
+					try {
+						System.out.println(lineData[3]);
+						freq = Integer.parseInt(lineData[3]);
+						System.out.println(freq);
+					} catch (NumberFormatException ignore) {
+						System.out.println("Error reading file");
+						freq = 0;
+					}
+					
 					fwriter.write(freq);
 					fwriter.newLine();
 					//listOfWords.add(line);
@@ -72,6 +78,7 @@ public class Dictionary {
 		int readFreq;
 		BufferedReader freader = new BufferedReader(new FileReader(newFile));
 		while ((lineRead = freader.readLine()) != null) {
+			System.out.println(lineRead);
 			lineReadData = lineRead.split(" +");
 			try {
 				readFreq = Integer.valueOf(lineReadData[1]);
@@ -83,9 +90,10 @@ public class Dictionary {
 			this.listOfWords.add(newWord); 
 		}
 		
-		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, listOfWords.size());
+		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, this.listOfWords.size());
+		//int indexNumOfSolution = 0;
 		
-		solution = listOfWords.get(indexNumOfSolution).getWord();
+		solution = this.listOfWords.get(indexNumOfSolution).getWord();
 		
 		System.out.println("Solution is: " + solution);
 		

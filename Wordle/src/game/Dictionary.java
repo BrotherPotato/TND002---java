@@ -99,8 +99,8 @@ public class Dictionary {
 		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, maxIndex);
 		//int indexNumOfSolution = 0;
 		
-		solution = this.listOfWords.get(indexNumOfSolution).getWord();
-		
+		//solution = this.listOfWords.get(indexNumOfSolution).getWord();
+		solution = "CONDO";
 		System.out.println("Solution is: " + solution);
 		
 		freader.close();
@@ -137,13 +137,15 @@ public class Dictionary {
 //				}	
 //			}
 //		}
-		
+		//////////////////////////////////////////
 		this.boardState[this.rowIndex] = word;
-
-		for (int i = 0; i < wordLetters.length; i++) {
-			this.evaluations[this.rowIndex][i] = evaluation(wordLetters[i], i);
-			System.out.println(evaluations[this.rowIndex][i]);
-		}
+//		
+//		for (int i = 0; i < wordLetters.length; i++) {
+//			this.evaluations[this.rowIndex][i] = evaluation(wordLetters[i], i);
+//		}
+//		
+		
+		evaluations[this.rowIndex] = evaluation(word);
 		
 		for (int i = 0; i < evaluations[this.rowIndex].length; i++) {
 			if(evaluations[this.rowIndex][i] == "correct") {
@@ -153,22 +155,68 @@ public class Dictionary {
 			}
 		}
 		
+		
+		
+		
+		
 		this.rowIndex++;
 		return charHints;
 	}
 	
-	public String evaluation(String letter, int location) {
+//	public String evaluation(String letter, int location) {
+//		String[] solutionLetters = solution.split("");
+//		for (int i = 0; i < solutionLetters.length; i++) {
+//			if(letter.equals(solutionLetters[i])) {
+//				if(i == location) {
+//					return "correct";
+//				} else {
+//					return "present";
+//				}
+//			}
+//		}
+//		return "absent";
+//	}
+	
+	public String[] evaluation(String word) {
 		String[] solutionLetters = solution.split("");
-		for (int i = 0; i < solutionLetters.length; i++) {
-			if(letter.equals(solutionLetters[i])) {
-				if(i == location) {
-					return "correct";
-				} else {
-					return "present";
+		String[] solution = new String[solutionLetters.length];
+		String[] testLetters = word.split("");
+		
+		//int[] amountSolutionLetters = charCounter(solutionLetters);
+		//int[] amountTestLetters = charCounter(solutionLetters);
+		
+		boolean[] letterDone = new boolean[solutionLetters.length];
+		boolean[] solutionLetterDone = new boolean[solutionLetters.length];
+		
+		//ArrayList <String> addedLetters = new ArrayList<String>();
+		for (int i = 0; i < testLetters.length; i++) {
+				if(testLetters[i].equals(solutionLetters[i])) {
+						solution[i] = "correct";
+						letterDone[i] = true;
+						solutionLetterDone[i] = true;
+				}
+		}
+		for (int i = 0; i < testLetters.length; i++) {
+			if(letterDone[i] == false) {
+				for (int j = 0; j < solutionLetters.length; j++) {
+					if(testLetters[i].equals(solutionLetters[j]) && solutionLetterDone[j] == false) {
+						solution[i] = "present";
+						letterDone[i] = true;
+						solutionLetterDone[j] = true;
+						break;
+					}
 				}
 			}
 		}
-		return "absent";
+		
+		for (int i = 0; i < testLetters.length; i++) {
+			if(letterDone[i] == false) {
+				solution[i] = "absent";
+			}
+		}
+		
+		
+		return solution;
 	}
 	
 	public boolean CorrectAnswer(String word) {
@@ -184,20 +232,20 @@ public class Dictionary {
 		
 	}
 	
-//	public int[] charCounter(String[] letters) {
-//		int[] solutionLetterAmount = new int[letters.length];
-//		int counter;
-//		
-//		for (int i = 0; i < letters.length; i++) {
-//			counter = 0;
-//			for (int j = 0; j < letters.length; j++) {
-//				if(letters[i].equals(letters[j]) && i != j) {
-//					counter++;
-//				}
-//			}
-//			solutionLetterAmount[i] = counter;
-//		}
-//		
-//		return solutionLetterAmount;
-//	}
+	public int[] charCounter(String[] letters) {
+		int[] solutionLetterAmount = new int[letters.length];
+		int counter;
+		
+		for (int i = 0; i < letters.length; i++) {
+			counter = 0;
+			for (int j = 0; j < letters.length; j++) {
+				if(letters[i].equals(letters[j]) && i != j) {
+					counter++;
+				}
+			}
+			solutionLetterAmount[i] = counter;
+		}
+		
+		return solutionLetterAmount;
+	}
 }

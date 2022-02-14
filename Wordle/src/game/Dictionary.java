@@ -48,7 +48,7 @@ public class Dictionary {
 				
 				if(word.length() == size) {
 					word = word.toUpperCase();
-					System.out.println(word);
+					//System.out.println(word);
 					fwriter.write(word);
 					fwriter.write("    ");
 					freq = lineData[3];
@@ -78,7 +78,7 @@ public class Dictionary {
 		int readFreq;
 		BufferedReader freader = new BufferedReader(new FileReader(newFile));
 		while ((lineRead = freader.readLine()) != null) {
-			System.out.println(lineRead);
+			//System.out.println(lineRead);
 			lineReadData = lineRead.split(" +");
 			try {
 				readFreq = Integer.valueOf(lineReadData[1]);
@@ -115,6 +115,7 @@ public class Dictionary {
 				if(solutionLetters[j].equals(wordLetters[i])) {
 					if(i == j) {
 						charHints[i] = 2;
+						break;
 						//System.out.println("one correct");
 					} else {
 						if(charHints[i] < 1) {

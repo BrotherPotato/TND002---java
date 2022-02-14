@@ -115,7 +115,7 @@ public class Dictionary {
 //		
 //		String[] solutionLetters = solution.split("");
 //		//int[] solutionLettersAmount = charCounter(solutionLetters);
-		String[] wordLetters = word.split("");
+		//String[] wordLetters = word.split("");
 //		//int[] wordLettersAmount = charCounter(wordLetters);
 //		boolean[] oneAssigned = new boolean[wordLetters.length];
 //		
@@ -155,10 +155,6 @@ public class Dictionary {
 			}
 		}
 		
-		
-		
-		
-		
 		this.rowIndex++;
 		return charHints;
 	}
@@ -196,6 +192,7 @@ public class Dictionary {
 						solutionLetterDone[i] = true;
 				}
 		}
+		
 		for (int i = 0; i < testLetters.length; i++) {
 			if(letterDone[i] == false) {
 				for (int j = 0; j < solutionLetters.length; j++) {
@@ -232,20 +229,20 @@ public class Dictionary {
 		
 	}
 	
-	public int[] charCounter(String[] letters) {
-		int[] solutionLetterAmount = new int[letters.length];
-		int counter;
-		
-		for (int i = 0; i < letters.length; i++) {
-			counter = 0;
-			for (int j = 0; j < letters.length; j++) {
-				if(letters[i].equals(letters[j]) && i != j) {
-					counter++;
-				}
-			}
-			solutionLetterAmount[i] = counter;
-		}
-		
-		return solutionLetterAmount;
-	}
+//	public int[] charCounter(String[] letters) {
+//		int[] solutionLetterAmount = new int[letters.length];
+//		int counter;
+//		
+//		for (int i = 0; i < letters.length; i++) {
+//			counter = 0;
+//			for (int j = 0; j < letters.length; j++) {
+//				if(letters[i].equals(letters[j]) && i != j) {
+//					counter++;
+//				}
+//			}
+//			solutionLetterAmount[i] = counter;
+//		}
+//		
+//		return solutionLetterAmount;
+//	}
 }

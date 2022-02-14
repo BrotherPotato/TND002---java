@@ -99,8 +99,8 @@ public class Dictionary {
 		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, maxIndex);
 		//int indexNumOfSolution = 0;
 		
-		//solution = this.listOfWords.get(indexNumOfSolution).getWord();
-		solution = "CONDO";
+		solution = this.listOfWords.get(indexNumOfSolution).getWord();
+		//solution = "CONDO";
 		System.out.println("Solution is: " + solution);
 		
 		freader.close();

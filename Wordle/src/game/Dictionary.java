@@ -14,11 +14,17 @@ public class Dictionary {
 	public ArrayList<Word> listOfWords;
 	public String solution;
 	public int size = 5;
+	public String[] boardState;
+	public String[][] evaluations; 
+	public int rowIndex;
 	
 	public Dictionary(int size) throws IOException {
 		//this.listOfWords = new ArrayList<String>();
 		this.listOfWords = new ArrayList<Word>();
 		this.size = size;
+		this.boardState = new String[6];
+		this.evaluations = new String[6][size]; 
+		this.rowIndex = 0;
 		File newFile = new File("words_size_" + size + ".txt");
 		if(newFile.exists()) {
 			System.out.println(newFile.getAbsolutePath());
@@ -89,8 +95,8 @@ public class Dictionary {
 			Word newWord = new Word(lineReadData[0], readFreq);
 			this.listOfWords.add(newWord); 
 		}
-		
-		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, this.listOfWords.size());
+		int maxIndex = (int) Math.floor(this.listOfWords.size() * 0.70);
+		int indexNumOfSolution = ThreadLocalRandom.current().nextInt(0, maxIndex);
 		//int indexNumOfSolution = 0;
 		
 		solution = this.listOfWords.get(indexNumOfSolution).getWord();
@@ -106,37 +112,92 @@ public class Dictionary {
 		for (int i = 0; i < charHints.length; i++) {
 			charHints[i] = 0;
 		}
-		
-		String[] solutionLetters = solution.split("");
+//		
+//		String[] solutionLetters = solution.split("");
+//		//int[] solutionLettersAmount = charCounter(solutionLetters);
 		String[] wordLetters = word.split("");
+//		//int[] wordLettersAmount = charCounter(wordLetters);
+//		boolean[] oneAssigned = new boolean[wordLetters.length];
+//		
+//		for (int i = 0; i < wordLetters.length; i++) {
+//			for (int j = 0; j < solutionLetters.length; j++) {
+//				if(solutionLetters[j].equals(wordLetters[i])) {
+//					if(i == j) {
+//						charHints[i] = 2;
+//						break;
+//						//System.out.println("one correct");
+//					} else if(charHints[i] < 1) {
+//						
+//						
+//						
+//						charHints[i] = 1;
+//						//System.out.println("one close");
+//						break;
+//					}
+//				}	
+//			}
+//		}
 		
+		this.boardState[this.rowIndex] = word;
+
 		for (int i = 0; i < wordLetters.length; i++) {
-			for (int j = 0; j < solutionLetters.length; j++) {
-				if(solutionLetters[j].equals(wordLetters[i])) {
-					if(i == j) {
-						charHints[i] = 2;
-						break;
-						//System.out.println("one correct");
-					} else {
-						if(charHints[i] < 1) {
-							charHints[i] = 1;
-							//System.out.println("one close");
-						}
-					}
-				}
+			this.evaluations[this.rowIndex][i] = evaluation(wordLetters[i], i);
+			System.out.println(evaluations[this.rowIndex][i]);
+		}
+		
+		for (int i = 0; i < evaluations[this.rowIndex].length; i++) {
+			if(evaluations[this.rowIndex][i] == "correct") {
+				charHints[i] = 2;
+			} else if(evaluations[this.rowIndex][i] == "present") {
+				charHints[i] = 1;
 			}
 		}
 		
-
-		
+		this.rowIndex++;
 		return charHints;
+	}
+	
+	public String evaluation(String letter, int location) {
+		String[] solutionLetters = solution.split("");
+		for (int i = 0; i < solutionLetters.length; i++) {
+			if(letter.equals(solutionLetters[i])) {
+				if(i == location) {
+					return "correct";
+				} else {
+					return "present";
+				}
+			}
+		}
+		return "absent";
 	}
 	
 	public boolean CorrectAnswer(String word) {
 		if(solution.equals(word)) {
+			for (int i = 0; i < boardState.length; i++) {
+				System.out.println(this.boardState[i]);
+			}
 			return true;
 		} else {
 			return false;
 		}
+		
+		
 	}
+	
+//	public int[] charCounter(String[] letters) {
+//		int[] solutionLetterAmount = new int[letters.length];
+//		int counter;
+//		
+//		for (int i = 0; i < letters.length; i++) {
+//			counter = 0;
+//			for (int j = 0; j < letters.length; j++) {
+//				if(letters[i].equals(letters[j]) && i != j) {
+//					counter++;
+//				}
+//			}
+//			solutionLetterAmount[i] = counter;
+//		}
+//		
+//		return solutionLetterAmount;
+//	}
 }

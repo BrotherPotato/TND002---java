@@ -34,7 +34,7 @@ public class Dictionary {
 			String line;
 			String lineData[] = new String[25];
 			String word;
-			int freq;
+			String freq;
 			
 			BufferedReader freader = new BufferedReader(new FileReader(dicFile));
 			BufferedWriter fwriter = new BufferedWriter(new FileWriter(newFile));
@@ -51,15 +51,15 @@ public class Dictionary {
 					System.out.println(word);
 					fwriter.write(word);
 					fwriter.write("    ");
-					
-					try {
-						System.out.println(lineData[3]);
-						freq = Integer.parseInt(lineData[3]);
-						System.out.println(freq);
-					} catch (NumberFormatException ignore) {
-						System.out.println("Error reading file");
-						freq = 0;
-					}
+					freq = lineData[3];
+//					try {
+//						System.out.println(lineData[3]);
+//						freq = Integer.parseInt(lineData[3]);
+//						System.out.println(freq);
+//					} catch (NumberFormatException ignore) {
+//						System.out.println("Error reading file");
+//						freq = 0;
+//					}
 					
 					fwriter.write(freq);
 					fwriter.newLine();

@@ -101,7 +101,7 @@ public class Dictionary {
 		
 		solution = this.listOfWords.get(indexNumOfSolution).getWord();
 		//solution = "CONDO";
-		System.out.println("Solution is: " + solution);
+		//System.out.println("Solution is: " + solution);
 		
 		freader.close();
 	}
@@ -227,6 +227,17 @@ public class Dictionary {
 		}
 		
 		
+	}
+
+
+	public boolean isWord(String input) {
+		boolean isWord = false;
+		for (int i = 0; i < listOfWords.size(); i++) {
+			if(input.equals(listOfWords.get(i).getWord())) {
+				isWord = true;
+			}
+		}
+		return isWord;
 	}
 	
 //	public int[] charCounter(String[] letters) {

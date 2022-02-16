@@ -34,9 +34,9 @@ public class PlayGame {
 			System.out.print("Row nr:" + tries + " input: ");
 			try {
 				input = b.readLine();
-
-				if(input.length() == size) {
-					input = input.toUpperCase();
+				input = input.toUpperCase();
+				
+				if(input.length() == size && dict.isWord(input)) {
 					
 					int[] results = dict.EnterWord(input);
 					for (int i = 0; i < results.length - 1; i++) {
@@ -50,14 +50,16 @@ public class PlayGame {
 					}
 					tries++;
 				} else {
-					System.out.println("Enter a 5 letter word");
+					System.out.println("Enter a " + size + " letter word");
 				}
 
 			} catch (IOException ignore) {
 				System.out.println("Failed to read input");
 			}
 		} while(tries < 6);
-
+		if(tries == 6) {
+			System.out.println(dict.solution);
+		}
 	}
 
 }

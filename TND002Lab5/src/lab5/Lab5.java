@@ -72,15 +72,15 @@ public class Lab5 {
 			orderBy = Integer.valueOf(getMessage);
 			System.out.println(orderBy);
 		} catch (NumberFormatException ignore) {
-			
+			System.out.println(getMessage);
 		}
-		while(orderBy != 0 || orderBy != 1 || orderBy != 2) {
+		while(orderBy != 0 && orderBy != 1 && orderBy != 2) {
 			JOptionPane.showMessageDialog(jFrame, "Try again!");
 			getMessage = JOptionPane.showInputDialog(jFrame, "You want to sort by Surname (1), Salary (2) or paid Taxes (3)?");
 			try {
 				orderBy = Integer.parseInt(getMessage);
 			} catch (NumberFormatException ignore) {
-				
+				System.out.println(getMessage);
 			}
 		}
 		

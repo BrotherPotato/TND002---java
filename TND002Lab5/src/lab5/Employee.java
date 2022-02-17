@@ -1,6 +1,8 @@
 package lab5;
 
-public abstract class Employee {
+import java.util.Locale;
+
+public abstract class Employee implements Comparable<Employee> {
 	public String firstName;
 	private String secondName;
 	private int employeeNumber;
@@ -41,7 +43,14 @@ public abstract class Employee {
 	public abstract double computeTaxes();
 	
 	// The information about the employee is returned in the form first name (12 characters), second name (12 characters) and employee number (8 characters).
+	// If you sort by paid taxes you also attach the value of the paid taxes.
 	public String toString() {
-		return "";
+		if(sortCriterion == Employee.BYSALARY) {
+			return String.format(Locale.US, "%-12s %-12s %-8d %-12.6f\n", this.firstName, this.getName(), this.getNumber(), this.getSalary());
+		} else if(sortCriterion == Employee.BYTAXES) {
+			return String.format(Locale.US, "%-12s %-12s %-8d %-12.6f\n", this.firstName, this.getName(), this.getNumber(), this.computeTaxes());
+		}
+		
+		return String.format(Locale.US, "%-12s %-12s %-8d\n", this.firstName, this.getName(), this.getNumber());
 	}
 }

@@ -33,6 +33,10 @@ public class Director extends Employee {
 	
 	// This instance method compares two employees.
 	public int compareTo(Employee employee) {
+		if(sortCriterion == Employee.BYNAME) {
+			return Integer.signum(this.getName().compareTo(employee.getName()));
+		}
+		
 		if(this.getSalary() > employee.getSalary()) {
 			return -1;
 		} else if(this.getSalary() == employee.getSalary()) {

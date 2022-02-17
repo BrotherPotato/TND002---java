@@ -10,6 +10,10 @@ public class Worker extends Employee {
 	// This instance method compares two employees.
 	// a value -1, 0, 1 depending on if the salary of this employee is higher, equal or lower than that of arg.
 	public int compareTo(Employee employee) {
+		if(sortCriterion == Employee.BYNAME) {
+			return Integer.signum(this.getName().compareTo(employee.getName()));
+		}
+		
 		if(this.getSalary() > employee.getSalary()) {
 			return -1;
 		} else if(this.getSalary() == employee.getSalary()) {

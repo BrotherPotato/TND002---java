@@ -11,7 +11,7 @@ import java.util.Collections;
 /** THIS DEFINES THE CLASS*/
 public class Company extends Object{
 	/** THIS IS THE LIST OF EMPLOYEES */
-	public ArrayList<Employee> employeeList;
+	private ArrayList<Employee> employeeList;
 	
 	/** The constructor takes no argument */
 	public Company() {

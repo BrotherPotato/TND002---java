@@ -1,9 +1,17 @@
 package lab5;
 
+/**
+ * @author Max 
+ * @version 1.0
+ * THIS IS THE MAIN CLASS WHICH DOES THINGS
+ */
+
 import javax.swing.*;
-
-public class Lab5 {
-
+/** THIS IS THE MAIN CLASS*/
+public class Lab5 extends Object {
+	/** THIS IS THE MAIN METHOD
+	 * @param args - THIS DOES NOT MATTER
+	 * */
 	public static void main(String[] args) {
 		
 		Company theCompany = new Company();
@@ -39,48 +47,25 @@ public class Lab5 {
 		Employee.changeCriterion(Employee.BYTAXES);
 		System.out.println(theCompany.toString());	
 		
-		//This is the code for part C.
-		
-//		JFrame jFrame = new JFrame();	
-//		int input = -1;
-//		do {
-//			input = -1;
-//			String getMessage = JOptionPane.showInputDialog(jFrame, "You want to sort by Surname (1), Salary (2) or paid Taxes (3)?");
-//			try {
-//				System.out.println(getMessage);
-//				input = Integer.valueOf(getMessage);
-//				System.out.println(input);
-//			} catch (NumberFormatException ignore) {
-//				JOptionPane.showMessageDialog(jFrame, "Try again!");
-//				getMessage = JOptionPane.showInputDialog(jFrame, "You want to sort by Surname (1), Salary (2) or paid Taxes (3)?");
-//			}
-//		} while(input != 0 || input != 1 || input != 2);
-//		
-//		Employee.changeCriterion(Employee.BYNAME);
-//		JOptionPane.showMessageDialog(jFrame, theCompany.toString());
-//		System.out.println("asdasd");
-		
+		//This is the code for part C.	
 		
 		JFrame jFrame = new JFrame();
 		jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		//String getMessage = "";
-		int orderBy = -1;
+		int orderBy;
 		
-		String getMessage = JOptionPane.showInputDialog(jFrame, "You want to sort by Surname (1), Salary (2) or paid Taxes (3)?");
-		System.out.println(getMessage);
+		String getMessage = JOptionPane.showInputDialog(jFrame, "Do you want to sort by Surname (0), Salary (1) or paid Taxes (2)?");
 		try {
-			orderBy = Integer.valueOf(getMessage);
-			System.out.println(orderBy);
+			orderBy = Integer.parseInt(getMessage);
 		} catch (NumberFormatException ignore) {
-			System.out.println(getMessage);
+			orderBy = -1;
 		}
 		while(orderBy != 0 && orderBy != 1 && orderBy != 2) {
 			JOptionPane.showMessageDialog(jFrame, "Try again!");
-			getMessage = JOptionPane.showInputDialog(jFrame, "You want to sort by Surname (1), Salary (2) or paid Taxes (3)?");
+			getMessage = JOptionPane.showInputDialog(jFrame, "Do you want to sort by Surname (0), Salary (1) or paid Taxes (2)?");
 			try {
 				orderBy = Integer.parseInt(getMessage);
 			} catch (NumberFormatException ignore) {
-				System.out.println(getMessage);
+				orderBy = -1;
 			}
 		}
 		

@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"lab5","l":"Company"},{"p":"lab5","l":"Director"},{"p":"lab5","l":"Employee"},{"p":"lab5","l":"Lab5"},{"p":"lab5","l":"Worker"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"lab5","l":"Company"},{"p":"lab5","l":"Director"},{"p":"lab5","l":"Employee"},{"p":"lab5","l":"Lab5"},{"p":"lab5","l":"Worker"}];updateSearchResults();

@@ -13,6 +13,10 @@ public class GUI extends JFrame implements ActionListener {
 	
 	private PhoneBook phoneBook = new PhoneBook();
 	
+	private ArrayList<Person> listOfPeople = new ArrayList<Person>();
+	private int personCounter = 0;
+	private boolean readAddPersonInput = false;
+	
 	public GUI() {
 
 		//phBook = new PhoneBook();
@@ -111,9 +115,7 @@ public class GUI extends JFrame implements ActionListener {
 //			theLabel.setText(theTextField.getText());
 //			theTextField.setText("");;
 //		}
-		ArrayList<Person> listOfPeople = null;
-		int personCounter = 0;
-		boolean readAddPersonInput = false;
+		
 		
 		if(ae.getSource() == loadButton || ae.getSource() == searchField) {
 			String searchText = searchField.getText();
@@ -156,12 +158,12 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		if(ae.getSource() == nextButton) {
 			personCounter++;
-			if(personCounter >= listOfPeople.size() -1) {
+			System.out.println(personCounter);
+			nameField.setText(listOfPeople.get(personCounter).getFullName());
+			numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
+			if(personCounter >= listOfPeople.size() - 1) {
 				personCounter = 0;
-				nextButton.setEnabled(false); 
-			} else {
-				nameField.setText(listOfPeople.get(personCounter).getFullName());
-				numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
+				nextButton.setEnabled(false);
 			}
 		}
 		if(ae.getSource() == addButton) {
@@ -169,6 +171,7 @@ public class GUI extends JFrame implements ActionListener {
 				searchField.setText("Type in name and phonenumber");
 				nameField.setEditable(true);
 				numberField.setEditable(true);
+				readAddPersonInput = true;
 			} else {
 				boolean personAdded = phoneBook.addPerson(nameField.getText(), Integer.parseInt(numberField.getText()));
 				nameField.setText("");
@@ -180,12 +183,19 @@ public class GUI extends JFrame implements ActionListener {
 				} else {
 					searchField.setText("Person could not be added");
 				}
+				readAddPersonInput = false;
 			}
 			
 		}
 		
 		if(ae.getSource() == deleteButton) {
-			searchField.setText(phoneBook.deletePerson(listOfPeople.get(personCounter).getFullName(), listOfPeople.get(personCounter).getPhoneNumber()));
+//			System.out.println(personCounter);
+//			System.out.println(listOfPeople.get(0).getFullName());
+//			System.out.println(listOfPeople.get(personCounter).getPhoneNumber());
+			
+			//searchField.setText(phoneBook.deletePerson(listOfPeople.get(personCounter).getFullName(), listOfPeople.get(personCounter).getPhoneNumber()));
+			searchField.setText(phoneBook.deletePerson(nameField.getText(), Integer.parseInt(numberField.getText())));
+
 		}
 	}
 		

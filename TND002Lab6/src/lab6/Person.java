@@ -7,9 +7,9 @@ public class Person {
 	private int phoneNumber;
 	
 	Person(String givenName, String surname, int phoneNumber){
-		givenName = this.givenName;
-		surname = this.surname;
-		phoneNumber = this.phoneNumber;
+		this.givenName = givenName;
+		this.surname = surname;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public String getSurname() {
@@ -17,6 +17,7 @@ public class Person {
 	}
 	
 	public String getFullName() {
+		//System.out.println(this.givenName + " " + this.surname);
 		return this.givenName + " " + this.surname;
 	}
 	

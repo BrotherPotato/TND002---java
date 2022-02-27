@@ -26,8 +26,13 @@ public class PhoneBook {
 			int phoneNumber;
 			while ((eachLine = freader.readLine()) != null) {
 				personData = eachLine.split(" +");
+				//System.out.println(personData[0]);
 				phoneNumber = Integer.parseInt(personData[2]);
+				//System.out.println(phoneNumber);
 				Person newPerson = new Person(personData[0], personData[1], phoneNumber);
+				
+				//System.out.println(newPerson.getFullName());
+				//System.out.println(newPerson.getPhoneNumber());
 				listOfNumbers.add(newPerson);
 			}
 			freader.close();
@@ -55,18 +60,27 @@ public class PhoneBook {
 	
 	public String deletePerson(String fullName, int phoneNumber) {
 		// change to forloop / get index of
-		for (Person person : listOfNumbers) {
-			if(person.getFullName().equals(fullName) && person.getPhoneNumber() == phoneNumber) {
-				listOfNumbers.remove(person);
+//		for (Person person : listOfNumbers) {
+//			if(person.getFullName().equals(fullName) && person.getPhoneNumber() == phoneNumber) {
+//				listOfNumbers.remove(person);
+//				return "Person deleted";
+//			}
+//		}
+		for (int i = 0; i < listOfNumbers.size(); i++) {
+			if(listOfNumbers.get(i).getFullName().equals(fullName) && listOfNumbers.get(i).getPhoneNumber() == phoneNumber) {
+				listOfNumbers.remove(i);
 				return "Person deleted";
 			}
 		}
+		
 		
 		return "The person/number does not exist";
 	}
 	
 	public boolean addPerson(String fullName, int phoneNumber) {
 		String[] splitName = fullName.split(" ");
+		//System.out.println(splitName.length);
+		//System.out.println(phoneNumber);
 		boolean phoneNumberFound = false;
 		for (Person person : listOfNumbers) {
 			if(person.getPhoneNumber() == phoneNumber) {
@@ -88,8 +102,9 @@ public class PhoneBook {
 		try {
 			BufferedWriter fwriter = new BufferedWriter(new FileWriter(file));
 			
+			//System.out.println(listOfNumbers.get(0).getPhoneNumber());
 			for (Person person : listOfNumbers) {
-				outputLine = String.format("%20s %5d", person.getFullName(), person.getPhoneNumber());
+				outputLine = String.format("%-20s %-5d", person.getFullName(), person.getPhoneNumber());
 				
 				fwriter.write(outputLine);
 				fwriter.newLine();

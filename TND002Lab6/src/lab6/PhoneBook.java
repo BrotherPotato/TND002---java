@@ -32,7 +32,7 @@ public class PhoneBook {
 			}
 			freader.close();
 			return "Phone book loaded";
-		} catch (Exception ignore) {
+		} catch (IOException ignore) {
 			return "Try again";
 		}
 	}

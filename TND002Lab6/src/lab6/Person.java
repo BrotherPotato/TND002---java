@@ -17,7 +17,6 @@ public class Person {
 	}
 	
 	public String getFullName() {
-		//System.out.println(this.givenName + " " + this.surname);
 		return this.givenName + " " + this.surname;
 	}
 	

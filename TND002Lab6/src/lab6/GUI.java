@@ -142,6 +142,7 @@ public class GUI extends JFrame implements ActionListener {
 			String searchText = searchField.getText();
 			searchField.setText("");
 			listOfPeople = phoneBook.search(searchText);
+			//System.out.println(listOfPeople.size());
 			if(listOfPeople.size() < 1) {
 				nameField.setText("Provide a name");
 				numberField.setText("");
@@ -158,13 +159,14 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		if(ae.getSource() == nextButton) {
 			personCounter++;
-			System.out.println(personCounter);
+			//System.out.println(personCounter);
 			nameField.setText(listOfPeople.get(personCounter).getFullName());
 			numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
 			if(personCounter >= listOfPeople.size() - 1) {
 				personCounter = 0;
 				nextButton.setEnabled(false);
 			}
+			
 		}
 		if(ae.getSource() == addButton) {
 			if(!readAddPersonInput) {
@@ -194,7 +196,17 @@ public class GUI extends JFrame implements ActionListener {
 //			System.out.println(listOfPeople.get(personCounter).getPhoneNumber());
 			
 			//searchField.setText(phoneBook.deletePerson(listOfPeople.get(personCounter).getFullName(), listOfPeople.get(personCounter).getPhoneNumber()));
-			searchField.setText(phoneBook.deletePerson(nameField.getText(), Integer.parseInt(numberField.getText())));
+			
+			try {
+				searchField.setText(phoneBook.deletePerson(nameField.getText(), Integer.parseInt(numberField.getText())));
+			} catch (Exception ignore) {
+				// TODO: handle exception
+				
+				searchField.setText("The person/number does not exist");
+			}
+			
+			//phoneBook.load();
+			
 
 		}
 	}

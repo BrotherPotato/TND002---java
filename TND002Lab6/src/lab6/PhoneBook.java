@@ -37,7 +37,7 @@ public class PhoneBook {
 			}
 			freader.close();
 			return "Phone book loaded";
-		} catch (IOException ignore) {
+		} catch (Exception ignore) { // IOException ignore
 			return "Try again";
 		}
 	}
@@ -47,6 +47,7 @@ public class PhoneBook {
 		
 		for (Person person : listOfNumbers) {
 			try {
+				//System.out.println("Test");
 				if(searchArg.equals(person.getSurname()) || Integer.parseInt(searchArg) == person.getPhoneNumber()) {
 					listOfPeople.add(person);
 				}
@@ -59,13 +60,7 @@ public class PhoneBook {
 	}
 	
 	public String deletePerson(String fullName, int phoneNumber) {
-		// change to forloop / get index of
-//		for (Person person : listOfNumbers) {
-//			if(person.getFullName().equals(fullName) && person.getPhoneNumber() == phoneNumber) {
-//				listOfNumbers.remove(person);
-//				return "Person deleted";
-//			}
-//		}
+
 		for (int i = 0; i < listOfNumbers.size(); i++) {
 			if(listOfNumbers.get(i).getFullName().equals(fullName) && listOfNumbers.get(i).getPhoneNumber() == phoneNumber) {
 				listOfNumbers.remove(i);

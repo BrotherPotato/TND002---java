@@ -27,11 +27,8 @@ public class PhoneBook {
 			Person newPerson;
 			while ((eachLine = freader.readLine()) != null) {
 				personData = eachLine.split(" +");
-				//System.out.println(personData[0]);
 				phoneNumber = Integer.parseInt(personData[2]);
-				//System.out.println(phoneNumber);
 				newPerson = new Person(personData[0], personData[1], phoneNumber);
-
 				listOfNumbers.add(newPerson);
 			}
 			freader.close();
@@ -46,7 +43,6 @@ public class PhoneBook {
 		
 		for (Person person : listOfNumbers) {
 			try {
-				//System.out.println("Test");
 				if(searchArg.equals(person.getSurname()) || Integer.parseInt(searchArg) == person.getPhoneNumber()) {
 					listOfPeople.add(person);
 				}
@@ -54,19 +50,16 @@ public class PhoneBook {
 				
 			}
 		}
-		
 		return listOfPeople;
 	}
 	
 	public String deletePerson(String fullName, int phoneNumber) {
-
 		for (int i = 0; i < listOfNumbers.size(); i++) {
 			if(listOfNumbers.get(i).getFullName().equals(fullName) && listOfNumbers.get(i).getPhoneNumber() == phoneNumber) {
 				listOfNumbers.remove(i);
 				return "Person deleted";
 			}
 		}
-		
 		return "The person/number does not exist";
 	}
 	
@@ -81,7 +74,6 @@ public class PhoneBook {
 		if(splitName.length != 2 || phoneNumberFound) {
 			return false;
 		}
-		
 		Person newPerson = new Person(splitName[0], splitName[1], phoneNumber);
 		listOfNumbers.add(newPerson);
 		return true;

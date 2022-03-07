@@ -24,15 +24,14 @@ public class PhoneBook {
 			String eachLine;
 			String[] personData;
 			int phoneNumber;
+			Person newPerson;
 			while ((eachLine = freader.readLine()) != null) {
 				personData = eachLine.split(" +");
 				//System.out.println(personData[0]);
 				phoneNumber = Integer.parseInt(personData[2]);
 				//System.out.println(phoneNumber);
-				Person newPerson = new Person(personData[0], personData[1], phoneNumber);
-				
-				//System.out.println(newPerson.getFullName());
-				//System.out.println(newPerson.getPhoneNumber());
+				newPerson = new Person(personData[0], personData[1], phoneNumber);
+
 				listOfNumbers.add(newPerson);
 			}
 			freader.close();
@@ -68,7 +67,6 @@ public class PhoneBook {
 			}
 		}
 		
-		
 		return "The person/number does not exist";
 	}
 	
@@ -97,18 +95,17 @@ public class PhoneBook {
 		try {
 			BufferedWriter fwriter = new BufferedWriter(new FileWriter(file));
 			
-			//System.out.println(listOfNumbers.get(0).getPhoneNumber());
 			for (Person person : listOfNumbers) {
 				outputLine = String.format("%-20s %-5d", person.getFullName(), person.getPhoneNumber());
 				
 				fwriter.write(outputLine);
 				fwriter.newLine();
 			}
+			fwriter.flush();
 			fwriter.close();
 			return "Saved " + listOfNumbers.size() + " people to the file";
 		} catch (IOException ignore) {
 			return "Could not save to the file";
 		}
 	}
-	
 }

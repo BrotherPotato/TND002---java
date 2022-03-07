@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GUI extends JFrame implements ActionListener {
 
 	private JButton loadButton, saveButton, searchButton, nextButton, addButton, deleteButton;
-	//private JLabel searchField, nameField, numberField;
+
 	private JTextField searchField, nameField, numberField;
 	
 	private PhoneBook phoneBook = new PhoneBook();
@@ -98,25 +98,12 @@ public class GUI extends JFrame implements ActionListener {
 		c.add(panel1);
 		c.add(panel2);
 		
-//		c.add(searchField);
-//		c.add(nameField);
-//		c.add(numberField);	
-		
 		setVisible(true); 
 		pack(); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-//		if (ae.getSource() == loadButton) {
-//			PhoneBook.load();
-//		}		
-//		if (ae.getSource() == theButton || ae.getSource() == theTextField) {
-//			theLabel.setText(theTextField.getText());
-//			theTextField.setText("");;
-//		}
-		
-		
 		if(ae.getSource() == loadButton || ae.getSource() == searchField) {
 			String searchText = searchField.getText();
 			searchField.setText("");
@@ -147,13 +134,21 @@ public class GUI extends JFrame implements ActionListener {
 				nameField.setText("Provide a name");
 				numberField.setText("");
 			} else if(listOfPeople.size() == 1) {
-				listOfPeople.get(0);
+				//listOfPeople.get(0);
 				nameField.setText(listOfPeople.get(0).getFullName());
-				numberField.setText(Integer.toString(listOfPeople.get(0).getPhoneNumber()));
+				try {
+					numberField.setText(Integer.toString(listOfPeople.get(0).getPhoneNumber()));
+				} catch (Exception ignore) {
+					numberField.setText("Could not add number");
+				}
 			} else {
 				personCounter = 0;
 				nameField.setText(listOfPeople.get(personCounter).getFullName());
-				numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
+				try {
+					numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
+				} catch (Exception ignore) {
+					numberField.setText("Could not add number");
+				}
 				nextButton.setEnabled(true); 
 			}
 		}
@@ -173,21 +168,27 @@ public class GUI extends JFrame implements ActionListener {
 				searchField.setText("Type in name and phonenumber");
 				nameField.setEditable(true);
 				numberField.setEditable(true);
-				readAddPersonInput = true;
-			} else {
-				boolean personAdded = phoneBook.addPerson(nameField.getText(), Integer.parseInt(numberField.getText()));
 				nameField.setText("");
 				numberField.setText("");
-				nameField.setEditable(false);
-				numberField.setEditable(false);
-				if(personAdded) {
-					searchField.setText("Person added");
-				} else {
+				readAddPersonInput = true;
+			} else {
+				try {
+					int phoneNumber = Integer.parseInt(numberField.getText());
+					boolean personAdded = phoneBook.addPerson(nameField.getText(), phoneNumber);
+					nameField.setText("");
+					numberField.setText("");
+					nameField.setEditable(false);
+					numberField.setEditable(false);
+					if(personAdded) {
+						searchField.setText("Person added");
+					} else {
+						searchField.setText("Person could not be added");
+					}
+					readAddPersonInput = false;
+				} catch (Exception ignore) {
 					searchField.setText("Person could not be added");
 				}
-				readAddPersonInput = false;
 			}
-			
 		}
 		
 		if(ae.getSource() == deleteButton) {

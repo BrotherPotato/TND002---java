@@ -18,8 +18,6 @@ public class GUI extends JFrame implements ActionListener {
 	private boolean readAddPersonInput = false;
 	
 	public GUI() {
-
-		//phBook = new PhoneBook();
 		setTitle("Interactive phonebook");
 		Font theFont = new Font("SansSerif",Font.PLAIN,20);
 		
@@ -54,7 +52,6 @@ public class GUI extends JFrame implements ActionListener {
 		addButton.setEnabled(false);
 		deleteButton.setEnabled(false);
 		
-		
 		searchField = new JTextField();
 		searchField.setFont(theFont);
 		searchField.addActionListener(this);
@@ -70,10 +67,6 @@ public class GUI extends JFrame implements ActionListener {
 		searchField.setEditable(true); // irrelevant
 		nameField.setEditable(false);
 		numberField.setEditable(false);
-		
-//		theTextField = new JTextField();
-//		theTextField.setFont(theFont); 
-//		theTextField.addActionListener(this);
 		
 		JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(3,2));
@@ -115,6 +108,7 @@ public class GUI extends JFrame implements ActionListener {
 			addButton.setEnabled(true);
 			deleteButton.setEnabled(true);
 		}
+		
 		if(ae.getSource() == saveButton) {
 			String searchText = searchField.getText();
 			if(searchText.isBlank() || searchText.equals("PhoneList.txt")) {
@@ -123,18 +117,16 @@ public class GUI extends JFrame implements ActionListener {
 				searchField.setText("");
 				nameField.setText(phoneBook.save(searchText));
 			}
-			
 		}
+		
 		if(ae.getSource() == searchButton) {
 			String searchText = searchField.getText();
 			searchField.setText("");
 			listOfPeople = phoneBook.search(searchText);
-			//System.out.println(listOfPeople.size());
 			if(listOfPeople.size() < 1) {
-				nameField.setText("Provide a name");
+				nameField.setText("Provide a surname or phonenumber");
 				numberField.setText("");
 			} else if(listOfPeople.size() == 1) {
-				//listOfPeople.get(0);
 				nameField.setText(listOfPeople.get(0).getFullName());
 				try {
 					numberField.setText(Integer.toString(listOfPeople.get(0).getPhoneNumber()));
@@ -152,17 +144,17 @@ public class GUI extends JFrame implements ActionListener {
 				nextButton.setEnabled(true); 
 			}
 		}
+		
 		if(ae.getSource() == nextButton) {
 			personCounter++;
-			//System.out.println(personCounter);
 			nameField.setText(listOfPeople.get(personCounter).getFullName());
 			numberField.setText(Integer.toString(listOfPeople.get(personCounter).getPhoneNumber()));
 			if(personCounter >= listOfPeople.size() - 1) {
 				personCounter = 0;
 				nextButton.setEnabled(false);
 			}
-			
 		}
+		
 		if(ae.getSource() == addButton) {
 			if(!readAddPersonInput) {
 				searchField.setText("Type in name and phonenumber");
@@ -192,31 +184,16 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		
 		if(ae.getSource() == deleteButton) {
-//			System.out.println(personCounter);
-//			System.out.println(listOfPeople.get(0).getFullName());
-//			System.out.println(listOfPeople.get(personCounter).getPhoneNumber());
-			
-			//searchField.setText(phoneBook.deletePerson(listOfPeople.get(personCounter).getFullName(), listOfPeople.get(personCounter).getPhoneNumber()));
-			
 			try {
 				searchField.setText(phoneBook.deletePerson(nameField.getText(), Integer.parseInt(numberField.getText())));
 			} catch (Exception ignore) {
-				// TODO: handle exception
-				
+
 				searchField.setText("The person/number does not exist");
 			}
-			
-			//phoneBook.load();
-			
-
 		}
 	}
 		
-	
 	public static void main(String[] args) {
-		
 		GUI myGUI = new GUI();
-
 	}
-
 }

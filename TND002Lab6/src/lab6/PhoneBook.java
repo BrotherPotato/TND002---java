@@ -72,8 +72,6 @@ public class PhoneBook {
 	
 	public boolean addPerson(String fullName, int phoneNumber) {
 		String[] splitName = fullName.split(" ");
-		//System.out.println(splitName.length);
-		//System.out.println(phoneNumber);
 		boolean phoneNumberFound = false;
 		for (Person person : listOfNumbers) {
 			if(person.getPhoneNumber() == phoneNumber) {

@@ -5,10 +5,13 @@ public class Exercise {
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader myReader = new BufferedReader(new InputStreamReader(System.in));
-		Complex result, newNumber; String input, mathSymbol; boolean test;
+		Complex result, newNumber; 
+		String input, mathSymbol; 
+		boolean test;
 		
-		do {result = getComplexNumber(myReader.readLine());}
-		while(result==null);
+		do {
+			result = getComplexNumber(myReader.readLine());
+		} while(result==null);
 		System.out.println("The number is : " + result);
 		
 		while (true) {			
@@ -16,7 +19,9 @@ public class Exercise {
 				test = true;
 				input = myReader.readLine();
 				
-				if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/") || input.equals("=")) test = false;
+				if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/") || input.equals("=")) {
+					test = false;
+				}
 			}
 			while(test);
 			

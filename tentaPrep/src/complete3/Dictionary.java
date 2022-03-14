@@ -37,7 +37,8 @@ public class Dictionary
 
     public void insert(Zoophobia zp)
     {
-    	String theAnimal = zp.getAnimal(), thePhobia = zp.getPhobia();
+    	String theAnimal = zp.getAnimal();
+    	String thePhobia = zp.getPhobia();
     	boolean exists = false;
         for (int j=0; j < dataBase.size(); j++) {
         	if (thePhobia.equals(dataBase.get(j).getPhobia())) {

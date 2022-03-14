@@ -1,8 +1,10 @@
 package complete4;
 public class Complex {
-	private double real, imag;
+	private double real; 
+	private double imag;
 	public Complex(double inR, double inI){
-		real = inR; imag = inI;
+		real = inR; 
+		imag = inI;
 	}
 	Complex add(Complex arg){
 		return new Complex(real+arg.real, imag+arg.imag);

@@ -13,12 +13,14 @@ public class Clerk extends Employee
 
     public void setWage(double w)
     {
-    	wage = 0; if (w>0) wage = w;
+    	wage = 0; 
+    	if (w>0) wage = w;
     }
 
     public void setHours(double h)
     {
-        hours = 0; if (h>0) hours = h;
+        hours = 0; 
+        if (h>0) hours = h;
     }
 
     public double earnings()

@@ -8,10 +8,11 @@ public class Exercise
         Payroll list = new Payroll();
 
         System.out.println(list.load());
-        String response; String[] subdivided;
+        String response; 
+        String[] subdivided;
         
         do {
-        	response=JOptionPane.showInputDialog(null,"Additional employees : ");
+        	response = JOptionPane.showInputDialog(null,"Additional employees : ");
         	subdivided = response.split(" +");
         	if (subdivided[0].equals("Boss")) list.insert(new Boss(subdivided[1],subdivided[2],Double.valueOf(subdivided[3])));
         	else if (subdivided[0].equals("Clerk")) list.insert(new Clerk(subdivided[1],subdivided[2],Double.valueOf(subdivided[3]),Double.valueOf(subdivided[4])));

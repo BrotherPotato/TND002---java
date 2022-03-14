@@ -15,9 +15,13 @@ public class Payroll
     	int before = vec.size();
     	try {
     		BufferedReader theReader = new BufferedReader(new InputStreamReader(System.in));
-    		System.out.print("File name : "); String arg = theReader.readLine(); theReader.close(); 
+    		System.out.print("File name : "); 
+    		String arg = theReader.readLine(); 
+    		theReader.close(); 
+    		
     		theReader = new BufferedReader(new FileReader(arg));
-    		String input; String[] subdivided;
+    		String input; 
+    		String[] subdivided;
     		while((input = theReader.readLine())!=null) {
     			subdivided = input.split(" +");
     			if (subdivided.length == 4 && subdivided[0].equals("Boss")) vec.add(new Boss(subdivided[1], subdivided[2], Double.valueOf(subdivided[3])));

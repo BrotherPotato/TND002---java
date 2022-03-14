@@ -1,0 +1,4 @@
+cynophobia          dogs
+ailurophobia        cats
+musophobia          rats
+ichthyophobia       fish

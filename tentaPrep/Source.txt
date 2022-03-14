@@ -1,0 +1,6 @@
+Boss Joakim Andersson 25000.00
+Clerk Kalle Pettersson 105.00 168.00
+Clerk Kajsa Lundstrom 145.00 176.00
+Worker Konrad Karlson 2.25 12321
+Worker Felix Nilsson 1.75 10101
+Worker Tomas Svensson 2.00 13579

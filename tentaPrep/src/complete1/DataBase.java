@@ -5,7 +5,8 @@ public class DataBase {
 	private int thePosition;
 	
 	public DataBase() {
-		start = null; thePosition = 1;
+		start = null; 
+		thePosition = 1;
 	}
 	
 	public void add(String arg) {
@@ -35,7 +36,9 @@ public class DataBase {
 	}
 	
 	public boolean delete(String arg) {
-		if (start==null) {return false;}
+		if (start==null) {
+			return false;
+		}
 		else {
 			// Case : only one element in the list.
 			if (!start.hasNext() && start.getWord().equals(arg)) {
@@ -73,7 +76,9 @@ public class DataBase {
 				}while(third.hasNext());
 
 			}			
-			if (start==null) return false;
+			if (start==null) {
+				return false;
+			}
 			else return true;
 		}
 	}

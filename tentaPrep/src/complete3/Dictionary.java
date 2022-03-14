@@ -17,8 +17,7 @@ public class Dictionary
         String line, phobia, animal;
         String[] strArray;
         try {
-        BufferedReader infile = new BufferedReader
-                               (new FileReader(myFile));
+        BufferedReader infile = new BufferedReader(new FileReader(myFile));
         while ((line = infile.readLine()) != null)
         {
             strArray = line.split(" +");

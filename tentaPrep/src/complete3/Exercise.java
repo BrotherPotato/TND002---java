@@ -7,7 +7,9 @@ public class Exercise {
         Dictionary theDictionary = new Dictionary();
 
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
-        File theFile; String input, phobia, animal; int loop;
+        File theFile; 
+        String input, phobia, animal; 
+        int loop;
         System.out.println("File to open : ");
         do {
         	input = consoleReader.readLine();

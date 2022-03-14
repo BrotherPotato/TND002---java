@@ -1,12 +1,15 @@
 package complete2;
 import java.util.*;
 public class Employee {	
-	private String theName, profession;
+	private String theName;
+	private String profession;
 	private double salary;
 	private Employee allocatedDirector = null;
 	
-	public Employee(String arg1, String arg2, double arg3) {
-		profession = arg1; theName = arg2; salary = arg3; 
+	public Employee(String profession, String theName, double salary) {
+		this.profession = profession; 
+		this.theName = theName; 
+		this.salary = salary; 
 	}
 	
 	public String getProfession() {
@@ -18,7 +21,9 @@ public class Employee {
 	}
 	
 	public void setAllocation(Employee arg) {
-		if (!profession.equals("Director") && arg.getProfession().equals("Director")) allocatedDirector = arg;
+		if (!profession.equals("Director") && arg.getProfession().equals("Director")) {
+			allocatedDirector = arg;
+		}
 	}
 	
 	public String getName() {
@@ -30,6 +35,6 @@ public class Employee {
 	}
 	
 	public String toString() {
-		return "Employee's details : " + theName + ", " + profession + ", " + salary + "\n";
+		return "Employee's details : " + this.theName + ", " + this.profession + ", " + this.salary + "\n";
 	}
 }

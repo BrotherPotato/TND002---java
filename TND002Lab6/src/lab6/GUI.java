@@ -101,12 +101,15 @@ public class GUI extends JFrame implements ActionListener {
 			String searchText = searchField.getText();
 			searchField.setText("");
 			nameField.setText(phoneBook.load(searchText));
-			loadButton.setEnabled(true); // irrelevant
-			saveButton.setEnabled(true);
-			searchButton.setEnabled(true);
-			nextButton.setEnabled(false); // irrelevant
-			addButton.setEnabled(true);
-			deleteButton.setEnabled(true);
+			if(nameField.getText().equals("Phone book loaded")) {
+				loadButton.setEnabled(true); // irrelevant
+				saveButton.setEnabled(true);
+				searchButton.setEnabled(true);
+				nextButton.setEnabled(false); // irrelevant
+				addButton.setEnabled(true);
+				deleteButton.setEnabled(true);
+			}
+			
 		}
 		
 		if(ae.getSource() == saveButton) {

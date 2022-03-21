@@ -5,48 +5,81 @@ import java.awt.event.*;
 
 public class GUI extends JFrame implements ActionListener {
 	private JButton greenplus, greenminus, blueplus, blueminus, redplus, redminus;
-	private Font theFont; 
+	private Font theFont;
 	private JPanel myPanel1, myPanel2;
 	private JTextField myTextField1, myTextField2, myTextField3;
 	private JLabel myMainLabel, myGreenLabel, myRedLabel, myBlueLabel;
-	private int red = 0, green = 0, blue = 0;	
+	private int red = 0, green = 0, blue = 0;
 	private Color theColor = Color.BLACK;
 	
 	public GUI(){
 		theFont = new Font("SansSerif", Font.PLAIN, 20);
 				
-		greenplus = new JButton("+"); greenplus.setFont(theFont); greenplus.addActionListener(this);
-		greenminus = new JButton("-"); greenminus.setFont(theFont); greenminus.addActionListener(this);
+		greenplus = new JButton("+"); 
+		greenplus.setFont(theFont); 
+		greenplus.addActionListener(this);
+		greenminus = new JButton("-"); 
+		greenminus.setFont(theFont); 
+		greenminus.addActionListener(this);
 		
-		redplus = new JButton("+"); redplus.setFont(theFont); redplus.addActionListener(this);
-		redminus = new JButton("-"); redminus.setFont(theFont); redminus.addActionListener(this);
+		redplus = new JButton("+"); 
+		redplus.setFont(theFont); 
+		redplus.addActionListener(this);
+		redminus = new JButton("-"); 
+		redminus.setFont(theFont); 
+		redminus.addActionListener(this);
 		
-		blueplus = new JButton("+"); blueplus.setFont(theFont); blueplus.addActionListener(this);
-		blueminus = new JButton("-"); blueminus.setFont(theFont); blueminus.addActionListener(this);
+		blueplus = new JButton("+"); 
+		blueplus.setFont(theFont); 
+		blueplus.addActionListener(this);
+		blueminus = new JButton("-"); 
+		blueminus.setFont(theFont); 
+		blueminus.addActionListener(this);
 		
-		myTextField1 = new JTextField(String.valueOf(red)); myTextField1.setFont(theFont); myTextField1.addActionListener(this);
-		myTextField2 = new JTextField(String.valueOf(green)); myTextField2.setFont(theFont); myTextField2.addActionListener(this);
-		myTextField3 = new JTextField(String.valueOf(blue)); myTextField3.setFont(theFont); myTextField3.addActionListener(this);
+		myTextField1 = new JTextField(String.valueOf(red)); 
+		myTextField1.setFont(theFont); 
+		myTextField1.addActionListener(this);
+		myTextField2 = new JTextField(String.valueOf(green)); 
+		myTextField2.setFont(theFont); 
+		myTextField2.addActionListener(this);
+		myTextField3 = new JTextField(String.valueOf(blue)); 
+		myTextField3.setFont(theFont); 
+		myTextField3.addActionListener(this);
 		
 		myPanel1 = new JPanel(new GridLayout(2,3));
 		myPanel2 = new JPanel(new GridLayout(2,3));
 
-		myMainLabel = new JLabel("Text",JLabel.CENTER); myMainLabel.setFont(theFont);
-		myRedLabel = new JLabel("Red "); myRedLabel.setFont(theFont);
-		myGreenLabel = new JLabel("Green "); myGreenLabel.setFont(theFont);
-		myBlueLabel = new JLabel("Blue "); myBlueLabel.setFont(theFont);
+		myMainLabel = new JLabel("Text",JLabel.CENTER); 
+		myMainLabel.setFont(theFont);
+		myRedLabel = new JLabel("Red "); 
+		myRedLabel.setFont(theFont);
+		myGreenLabel = new JLabel("Green "); 
+		myGreenLabel.setFont(theFont);
+		myBlueLabel = new JLabel("Blue "); 
+		myBlueLabel.setFont(theFont);
 		
-		myPanel1.add(myRedLabel); myPanel1.add(myGreenLabel);
-		myPanel1.add(myBlueLabel); myPanel1.add(myTextField1);
-		myPanel1.add(myTextField2); myPanel1.add(myTextField3);
-		myPanel2.add(redplus); myPanel2.add(greenplus);
-		myPanel2.add(blueplus); myPanel2.add(redminus);
-		myPanel2.add(greenminus); myPanel2.add(blueminus);
-		Container c = getContentPane(); c.setBackground(Color.WHITE);
+		myPanel1.add(myRedLabel); 
+		myPanel1.add(myGreenLabel);
+		myPanel1.add(myBlueLabel); 
+		myPanel1.add(myTextField1);
+		myPanel1.add(myTextField2); 
+		myPanel1.add(myTextField3);
+		myPanel2.add(redplus); 
+		myPanel2.add(greenplus);
+		myPanel2.add(blueplus); 
+		myPanel2.add(redminus);
+		myPanel2.add(greenminus); 
+		myPanel2.add(blueminus);
+		Container c = getContentPane(); 
+		c.setBackground(Color.WHITE);
 		c.setLayout(new GridLayout(3,1));
-		c.add(myMainLabel); c.add(myPanel1); c.add(myPanel2);
-
-		setVisible(true); pack(); setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		c.add(myMainLabel); 
+		c.add(myPanel1); 
+		c.add(myPanel2);
+		
+		setVisible(true); 
+		pack(); 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void actionPerformed(ActionEvent e){

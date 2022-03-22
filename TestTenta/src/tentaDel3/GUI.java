@@ -179,7 +179,7 @@ public class GUI extends JFrame implements ActionListener{
 		if(blue > 255) {
 			blue -= 255;
 		}
-		System.out.println(red + " " + green + " " + blue);
+		//System.out.println(red + " " + green + " " + blue);
 		textLabel.setForeground(new Color(red, green, blue));
 		redNumberField.setText(Integer.toString(red));
 		greenNumberField.setText(Integer.toString(green));

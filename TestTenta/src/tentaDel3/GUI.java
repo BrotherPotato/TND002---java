@@ -186,11 +186,7 @@ public class GUI extends JFrame implements ActionListener{
 		blueNumberField.setText(Integer.toString(blue));
 	}
 		
-	
 	public static void main(String[] args) {
 		GUI myGUI = new GUI();
-
 	}
-
-	
 }

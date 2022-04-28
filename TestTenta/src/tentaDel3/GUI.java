@@ -23,7 +23,7 @@ public class GUI extends JFrame implements ActionListener{
 		greenMinus = new JButton("-");
 		bluePlus = new JButton("+");
 		blueMinus = new JButton("-");
-		
+		System.out.println();
 		redPlus.setFont(myFont);
 		redMinus.setFont(myFont);
 		greenPlus.setFont(myFont);
